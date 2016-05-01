@@ -123,7 +123,7 @@
 		<BR></BR>
 	
 		
-		<font face="TakaoPGothic"<center><CENTER><H1>CLINICA ORIENTE S.A</H1></CENTER>
+		<font face="TakaoPGothic"<center><CENTER><H1>CLINICA S.A</H1></CENTER>
 		<BR></BR>
 		<BR></BR>
 		<font face="TakaoPGothic"<center><CENTER><H3>MISIÓN</H3></CENTER>
