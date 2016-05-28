@@ -20,16 +20,15 @@
 			<header id="header">
 
 				<!-- Logo -->
-					<h1 id="logo">Big Picture</h1>
+					<h1 id="logo"><IMG SRC=images/logo.png width="210"></h1>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="#intro">Intro</a></li>
-							<li><a href="#one">What I Do</a></li>
-							<li><a href="#two">Who I Am</a></li>
-							<li><a href="#work">My Work</a></li>
-							<li><a href="#contact">Contact</a></li>
+							<li><a href="#en_cartelera.php">En Cartelera</a></li>
+                            <li><a href="#buscar.php">Buscar</a></li>
+							<li><a href="#registrarse.php">Registrarse</a></li>
+							<li><a href="#"> # </a></li>
 						</ul>
 					</nav>
 

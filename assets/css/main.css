@@ -2818,8 +2818,7 @@
 		left: 0;
 		top: 0;
 		width: 100%;
-		background: #fff;
-		background: rgba(255, 255, 255, 0.95);
+		background: #232323;
 		height: 3em;
 		line-height: 3em;
 		box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
@@ -2831,11 +2830,12 @@
 
 	#logo {
 		position: absolute;
-		left: 1em;
+		left: 0em;
 		top: 0;
 		height: 3em;
 		line-height: 3em;
 		letter-spacing: -1px;
+		border: white 1.5px dotted;
 	}
 
 		#logo a {
@@ -2862,12 +2862,13 @@
 
 				#nav ul li a {
 					display: block;
-					color: inherit;
+					color: #C2C2C2;
 					text-decoration: none;
 					height: 3em;
 					line-height: 3em;
-					padding: 0 0.5em 0 0.5em;
+					padding: 0 9em 0 1.1em;
 					outline: 0;
+					border: white 1.5px dotted;
 				}
 
 /* Intro */
