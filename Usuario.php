@@ -7,6 +7,7 @@
         private $apellidos;
         private $fecha_nacimiento;
         private $email;
+        private $tipo_usuaio;
     }
 
 ?>
