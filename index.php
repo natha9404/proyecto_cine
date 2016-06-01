@@ -65,11 +65,8 @@
 										</a>
 									</li>
 									<li>
-<<<<<<< HEAD
-										<a href="Pagina_Pelicula.php">
-=======
+
 										<a href="Mejor_puntuadas.php">
->>>>>>> origin/master
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>
