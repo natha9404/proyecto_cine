@@ -26,7 +26,7 @@
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
                               
-							  <li><a href="#">INICIAR SESION</a></li>
+							  <li><a href="login.php">INICIAR SESION</a></li>
 						
 							</ul>
 						</nav>
@@ -65,7 +65,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Pagina_Pelicula.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>

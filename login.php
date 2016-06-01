@@ -103,7 +103,7 @@
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Invalid Credentials</span>
-<button type="button" class="log-btn" >Log in</button>
+<button type="button" class="log-btn" ><a href="Pagina_Pelicula_login.php">Log in</button>
      
     
    </div>
