@@ -3434,6 +3434,10 @@
 					margin-top: 0;
 					padding-top: 0;
 				}
+				
+				#menu .links > li a h2 {
+					font-size: 1.1em !important;
+				}
 
 		body.is-menu-visible #menu {
 			-moz-transform: translateX(0);

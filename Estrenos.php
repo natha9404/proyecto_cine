@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <!--
 	Future Imperfect by HTML5 UP
 	html5up.net | @n33co
@@ -10,7 +9,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/Pagina_Pelicula.css" />
+		<link rel="stylesheet" href="assets/css/Estrenos.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -46,6 +45,7 @@
 					</header>
 
 				<!-- Menu -->
+					<!-- Menu -->
 					<section id="menu">
 
 						<!-- Search -->
@@ -59,24 +59,24 @@
 							<section>
 								<ul class="links">
 									<li>
-										<a href="#">
+										<a href="estrenos.php">
 										<h2>ESTRENOS</h2>
 										
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Mejor_puntuadas.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Mas_Visitadas.php">
 										<h2>MAS VISITADAS</h2>
 										
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
 											
 										</a>
@@ -97,7 +97,7 @@
 
 		
 <header>
-	    <h2>MEJOR PUNTUADAS</h2>
+	    <h2>ESTRENOS</h2>
 								  <p>Desarrollado por: puntosoft</p>
 								</header>
 						
