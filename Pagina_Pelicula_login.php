@@ -25,9 +25,8 @@
 						<nav class="links">
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
-                              
-							  <li><a href="#">INICIAR SESION</a></li>
-						
+							  <li><a href="#">CERRAR SESION</a></li>
+							  <li>&nbsp;</li>
 							</ul>
 						</nav>
 						<nav class="main">
