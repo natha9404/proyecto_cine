@@ -46,6 +46,7 @@
 					</header>
 
 				<!-- Menu -->
+					<!-- Menu -->
 					<section id="menu">
 
 						<!-- Search -->
@@ -65,7 +66,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Pagina_Pelicula.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>
@@ -76,7 +77,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
 											
 										</a>

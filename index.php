@@ -65,7 +65,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Pagina_Pelicula.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>
