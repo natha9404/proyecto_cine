@@ -92,59 +92,48 @@
 				<!-- Main -->
 	<div id="main">
 
-						<!-- Post -->
-							<div class="login-form">
-     <h1>Registrate:</h1>
-     <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Nombre" id="nombre">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Apellido" id="apellido">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="email" class="form-control" placeholder="Email " id="email">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Username " id="UserName">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group log-status">
-       <input type="password" class="form-control" placeholder="Password" id="Passwod">
-       <i class="fa fa-lock"></i>
-     </div>
-<button type="button" class="log-btn" > registrarse</button>
-     
-    
-   </div>
+						<!-- Post --> <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
-
-<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
-						<!-- Post 
+						<!-- Post ---> 
 							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="#">Ultricies sed magna euismod enim vitae gravida</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-10-25">October 25, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
-								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.</p>
+							  <header> </header>
+                              <center><h3> PELICULAS</h3></center>
+								<center><iframe width="560" height="315" src="https://www.youtube.com/embed/vKa_wDG2mxg" frameborder="0" allowfullscreen></iframe></a></center>
+                                
+                              <div class="ec-stars-wrapper">
+	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+    <a href="#" data-value="1" title="Votar con 6 estrellas">&#9733;</a>
+	<a href="#" data-value="2" title="Votar con 7 estrellas">&#9733;</a>
+	<a href="#" data-value="3" title="Votar con 8 estrellas">&#9733;</a>
+	<a href="#" data-value="4" title="Votar con 9 estrellas">&#9733;</a>
+	<a href="#" data-value="5" title="Votar con 10 estrellas">&#9733;</a>
+</div>
+<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
+                                
+								<p>Título originaL: Phoenix </p>
+								<p>Año: 2014</p>
+								<p> Duración: 98 min </p>
+								<p>Reparto: Nina Hoss, Ronald Zehrfeld, Uwe Preuss, Nina Kunzendorf, Michael Maertens, Uwe Preuss, Imogen Kogge, Eva Bay, Kirsten Block, Megan Gay, Valerie Koch </p>
+								<p>Género: Drama </p>
+								<p>Sinopsis :Una cantante es traicionada y enviada a un campo de concentración. Al finalizar su calvario, vuelve con la cara totalmente desfigurada y pide a un eminente cirujano que se la reconstruya para que sea lo más parecida a como era antes. Recuperada de la operación empieza a buscar a su marido, un pianista. Pero el reencuentro no es lo que ella esperaba. </p>
+								<p>(FILMAFFINITY) </p>
+								<p>Cine Colombia Chipichape Martes, Mayo 3 de 2016 </p>
+								<p>| Avenida 6A Norte N° 37N-25 3D - Hablada en Español 3D - Subtítulos en Español 11:50 am12:45 pm02:55 pm03:45 pm 01:30 pm04:40 pm07:50 pm09:45 pm </p>
+								<p>Cine Colombia Cosmocentro Martes, Mayo 3 de 2016 </p>
+								<p>| Calle 5 N° 50-103 2D - Hablada en Español 3D - Hablada en Español 11:40 am01:50 pm02:50 pm 03:30 pm05:30 pm06:30 pm08:50 pm09:30 pm <br>
+							  </p>
 								<footer>
 									<ul class="actions">
-										<li><a href="#" class="button big">Continue Reading</a></li>
+										<li></li>
 									</ul>
 									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon fa-heart">28</a></li>
-										<li><a href="#" class="icon fa-comment">128</a></li>
+										<li></li>
+										<li></li>
+										<li></li>
 									</ul>
 								</footer>
 							</article>

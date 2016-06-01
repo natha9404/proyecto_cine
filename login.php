@@ -25,9 +25,8 @@
 						<nav class="links">
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
-                              
-							  <li><a href="#">INICIAR SESION</a></li>
-						
+							  <li><a href="#">REGISTRARSE</a></li>
+							  <li>&nbsp;</li>
 							</ul>
 						</nav>
 						<nav class="main">
@@ -76,7 +75,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="acerca.php">
+										<a href="#">
 											<h2>ACERCA DE MOVIE</h2>
 											
 										</a>
@@ -94,19 +93,7 @@
 
 						<!-- Post -->
 							<div class="login-form">
-     <h1>Registrate:</h1>
-     <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Nombre" id="nombre">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Apellido" id="apellido">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="email" class="form-control" placeholder="Email " id="email">
-       <i class="fa fa-user"></i>
-     </div>
+     <h1>Login</h1>
      <div class="form-group ">
        <input type="text" class="form-control" placeholder="Username " id="UserName">
        <i class="fa fa-user"></i>
@@ -115,7 +102,8 @@
        <input type="password" class="form-control" placeholder="Password" id="Passwod">
        <i class="fa fa-lock"></i>
      </div>
-<button type="button" class="log-btn" > registrarse</button>
+      <span class="alert">Invalid Credentials</span>
+<button type="button" class="log-btn" >Log in</button>
      
     
    </div>
