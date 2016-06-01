@@ -93,19 +93,25 @@
 	<div id="main">
 
 						<!-- Post -->
-							<article class="post"> <a href="#" class="image featured"></a>
-							  <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="#" class="button big">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon fa-heart">28</a></li>
-										<li><a href="#" class="icon fa-comment">128</a></li>
-									</ul>
-								</footer>
-	  </article>
+							<div class="login-form">
+     <h1>Login</h1>
+     <div class="form-group ">
+       <input type="text" class="form-control" placeholder="Username " id="UserName">
+       <i class="fa fa-user"></i>
+     </div>
+     <div class="form-group log-status">
+       <input type="password" class="form-control" placeholder="Password" id="Passwod">
+       <i class="fa fa-lock"></i>
+     </div>
+      <span class="alert">Invalid Credentials</span>
+      <a class="link" href="#">Lost your password?</a>
+     <button type="button" class="log-btn" >Log in</button>
+     
+    
+   </div>
+
+
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 						<!-- Post 
 							<article class="post">
@@ -483,7 +489,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					</div>
 
 				<!-- Sidebar -->
-					<section id="sidebar">
+	<section id="sidebar">
 
 						<!-- Intro -->
 							<section id="intro">
@@ -606,7 +612,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							<section id="footer">
 								<ul class="icons">
 									<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+								  <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
 									<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
