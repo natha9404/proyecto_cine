@@ -58,12 +58,6 @@
 						<!-- Links -->
 							<section>
 								<ul class="links">
-                                <li>
-										<a href="mi_lista.php">
-										<h2>Mi lista de Peliculas</h2>
-										
-										</a>
-									</li>
 									<li>
 										<a href="Estrenos.php">
 										<h2>ESTRENOS</h2>
@@ -71,7 +65,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="Mejores_puntuadas.php">
+										<a href="Mejor_puntadas.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>
@@ -103,28 +97,25 @@
 
 		
 <header>
-  <h2>Bienvenido user prueba</h2>
-  <p>peliculas destacadas</p>
-</header>
+	    <h2>MEJOR PUNTUADAS</h2>
+								  <p>Desarrollado por: puntosoft</p>
+								</header>
 						
 						<table class="tablaPeliculas">
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/espias.png"></img>
-                                        <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/san_andreas.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/child44.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 							</tr>
@@ -133,19 +124,16 @@
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/snoopy.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/phoenix.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/fant4stic.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 							</tr>

@@ -58,24 +58,24 @@
 							<section>
 								<ul class="links">
 									<li>
-										<a href="#">
+										<a href="Estrenos.php">
 										<h2>ESTRENOS</h2>
 										
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Mejor_puntuadas.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="Mas_Visitadas.php">
 										<h2>MAS VISITADAS</h2>
 										
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
 											
 										</a>
