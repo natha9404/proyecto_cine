@@ -2379,7 +2379,7 @@
 
 	.dark {
 		color: #fff;
-	}
+	}pg
 
 		.dark a {
 			color: #fff;
@@ -2855,7 +2855,7 @@
 		}
 
 			#nav ul li {
-				display: inline-block;
+				display:  inline-table;
 				margin-left: 0.5em;
 				font-size: 0.9em;
 			}
@@ -2870,6 +2870,16 @@
 					outline: 0;
 					border: white 1.5px dotted;
 				}
+				
+						#nav ul ul {
+							display: none;
+						}
+ 
+							#nav ul li:hover > ul {
+									display: block;
+								}
+			
+		
 
 /* Intro */
 
