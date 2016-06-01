@@ -119,7 +119,7 @@
        <input type="password" class="form-control" placeholder="Password" id="Passwod">
        <i class="fa fa-lock"></i>
      </div>
-<button type="button" class="log-btn" > registrarse</button>
+<button type="button" class="log-btn" ><a href="Pagina_Pelicula_login.php"> registrarse</button>
      
     
    </div>
