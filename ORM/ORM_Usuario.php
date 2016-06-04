@@ -1,7 +1,7 @@
 <?PHP
     class ORM {
         private static $basedatos;
-        protected static $tabla;
+        protected static $tabla = 'usuarios';
         
         function __construct(){
             self::getConnection();
@@ -9,7 +9,7 @@
         
         private static function getConnection(){
             require_once('BaseDatos.php');
-            self::$basedatos = BaseDatos::getConexion(DB_PROVIDER, DB_HOST, DB_USER, DB_PASSWORD, DB_DB);
+            self::$basedatos = BaseDatos::getConexion('ProveedorMySQL.php', '127.0.0.1', 'mamian', 'desarrollo2', 'c9');
             
         }
         

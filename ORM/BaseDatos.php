@@ -24,7 +24,7 @@
         
         public static function getConexion($proveedor, $host, $usuario, $contrasena, $bd){
             if(self::$_con){
-                return self::$$_con;
+                return self::$_con;
             }else{
                 $class = __CLASS__;
                 self::$$_con = new $class ($proveedor, $host, $usuario, $contrasena, $bd);
@@ -32,7 +32,7 @@
             }
         }
         
-        private function reeplazarParametros(){
+        private function reemplazarParametros(){
             $b = current($this->parametros);
             next($this->parametros);
             return $b;
