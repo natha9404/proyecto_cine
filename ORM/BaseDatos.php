@@ -5,11 +5,19 @@
         private $parametros;
         private static $_con;
         
-        public function _construct($proveedor, $host, $usuario, $contrasena, $bd){
+        public function __construct($proveedor, $host, $usuario, $contrasena, $bd){
+            echo $proveedor;
+            echo $host;
+            echo $usuario;
+            echo $contrasena;
+            echo $bd;
             
             if(!class_exists ($proveedor)){
+                echo $proveedor;
                 throw new Exception ("El proveedor no existe o no esta siendo implementado");
             }
+            
+            echo $host;
             
             $this->proveedor = new $proveedor;
             
@@ -27,7 +35,7 @@
                 return self::$_con;
             }else{
                 $class = __CLASS__;
-                self::$$_con = new $class ($proveedor, $host, $usuario, $contrasena, $bd);
+                self::$_con = new $class ($proveedor, $host, $usuario, $contrasena, $bd);
                 return self::$_con;
             }
         }
@@ -54,9 +62,9 @@
                     }elseif(is_numeric($value)){
                         
                         if(is_string($value)){
-                            $value = "'" .$this->proveedor->escape($value) . "'";
+                            $value = "'" .$this->proveedor->scape($value) . "'";
                         }else{
-                            $value = $this->proveedor->escape($value);
+                            $value = $this->proveedor->scape($value);
                         }
                         
                     }elseif(is_null($value)){
@@ -65,7 +73,7 @@
                         
                     }else{
                         
-                        $value = "'" . $this->proveedor->escape($value);
+                        $value = "'" . $this->proveedor->scape($value)."'";
                         
                     }
                     
@@ -107,7 +115,10 @@
         }
         
         public function ejecutar($q, $array_index=null, $parametros=null){
+            echo $q;
+            //echo $parametros;
             $resultado = $this->enviarConsulta($q, $parametros);
+            echo $resultado;
             if((is_object($resultado) || $this->proveedor->numRows($resultado) || $resultado) && ($resultado !== true && $resultado !== false)){
                 $arr = array();
                 while($row = $this->proveedor->fetchArray($resultado)){

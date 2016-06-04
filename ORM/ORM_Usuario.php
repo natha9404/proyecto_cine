@@ -5,6 +5,7 @@
         
         function __construct(){
             self::getConnection();
+            echo 'llamaron';
         }
         
         private static function getConnection(){
@@ -21,7 +22,7 @@
         public static function where ($campo, $valor){
             $obj = null;
             self::getConnection();
-            $query = "SELECT * FROM" . stat::$tabla . " WHERE " . $campo . " = ?";
+            $query = "SELECT * FROM usuarios WHERE " . $campo . " = " . $valor;
             $resultados = self::$basedatos->ejecutar($query, null, array($valor));
             
             if($resultados){
