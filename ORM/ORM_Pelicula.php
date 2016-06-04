@@ -14,7 +14,7 @@
         }
         
         public static function encontrar($id){
-            $resultado = self::where('id', $id);
+            $resultado = self::where('id_pelicula', $id);
             return $resultado[0];
         }
         
@@ -49,7 +49,7 @@
             if ($this->id) {
                 $columns = join(" = ?, ", $columns);
                 $columns.= ' = ?';
-                $query = "UPDATE " . static ::$table . " SET $columns WHERE id =" . $this->id;
+                $query = "UPDATE " . static ::$table . " SET $columns WHERE id_pelicula =" . $this->id;
             } else {
                 $params = join(", ", array_fill(0, count($columns), "?"));
                 $columns = join(", ", $columns);
