@@ -1,5 +1,5 @@
 <?PHP
-    class ORM {
+    class ORM_Usuario {
         private static $basedatos;
         protected static $tabla = 'usuarios';
         
