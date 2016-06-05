@@ -1,14 +1,23 @@
 <?PHP
 
-    require ("ORM/ORM_Usuario.php");
+    require ("ORM/Usuario_ORM.php");
     
     
-    //ORM_Usuario::__construct();
-    $resultado = ORM_Usuario::encontrar('edison.mamian');
+    $usuarios = Usuario_ORM::all('');
     
-    $arreglo = get_object_vars($resultado);
+    $obj = $usuarios[0];
+    
+    $arreglo = get_object_vars($obj);
     var_dump($arreglo);
-    print_r ($arreglo);
-    //print 'hola';
     
+    
+    $uno = Usuario_ORM::where('usuario', 'diana89');
+    //print_r($uno);
+    
+    
+    $dos = Usuario_ORM::where('usuario', 'edison');
+    //print_r($dos);
+    $dato = get_object_vars($dos[0]);
+    echo($dato['usuario']);
+    var_dump($dato);
 ?>
