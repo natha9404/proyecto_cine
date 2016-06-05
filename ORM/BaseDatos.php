@@ -1,23 +1,15 @@
 <?PHP
-    
+    require_once ('ProveedorMySQL.php');
     class BaseDatos {
         private $proveedor;
         private $parametros;
         private static $_con;
         
         public function __construct($proveedor, $host, $usuario, $contrasena, $bd){
-            echo $proveedor;
-            echo $host;
-            echo $usuario;
-            echo $contrasena;
-            echo $bd;
-            
+           
             if(!class_exists ($proveedor)){
-                echo $proveedor;
                 throw new Exception ("El proveedor no existe o no esta siendo implementado");
             }
-            
-            echo $host;
             
             $this->proveedor = new $proveedor;
             
@@ -82,7 +74,7 @@
                 
                 $this -> parametros = $ecaped;
                 
-                $q = preg_replace_callback("/(\?)/i", array($this, "reeplazarParametros"), $sql);
+                $q = preg_replace_callback("/(\?)/i", array($this, "reemplazarParametros"), $sql);
                 
                 return $q;
             }
@@ -115,10 +107,10 @@
         }
         
         public function ejecutar($q, $array_index=null, $parametros=null){
-            echo $q;
-            //echo $parametros;
+           
+            
             $resultado = $this->enviarConsulta($q, $parametros);
-            echo $resultado;
+            
             if((is_object($resultado) || $this->proveedor->numRows($resultado) || $resultado) && ($resultado !== true && $resultado !== false)){
                 $arr = array();
                 while($row = $this->proveedor->fetchArray($resultado)){
