@@ -42,6 +42,7 @@
         * Esta función se encarga de realizar una consulta a la base de datos.
         */
         public function query ($q) {
+            
             return $this->recurso->query($q);
         }
         
@@ -78,6 +79,7 @@
         * tomando en cuenta el conjunto de caracteres actual de la conexión
         */
         public function scape ($var){
+            
             return $this->recurso->real_escape_string($var);
         }
         

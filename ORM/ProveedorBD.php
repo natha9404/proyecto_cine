@@ -15,11 +15,5 @@
         public abstract function changeBD($bd);
         public abstract function setCharset($charset);
     }
-    /*
-    $link = mysql_connect('127.0.0.1', 'mamian', '')
-        or die ("No se pudo conectar: ".mysql_error());
     
-    
-    mysql_select_db('c9') or die (" No se pudo conectar a la base de datos");
-    */
 ?>

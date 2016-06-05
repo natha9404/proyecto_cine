@@ -1,5 +1,5 @@
 <?PHP
-    class ORM_ComentarPelicula {
+    class ORM {
         private static $basedatos;
         protected static $tabla;
         
@@ -9,19 +9,15 @@
         
         private static function getConnection(){
             require_once('BaseDatos.php');
-            self::$basedatos = BaseDatos::getConexion('ProveedorMySQL.php', '127.0.0.1', 'mamian', 'desarrollo2', 'c9');
+            self::$basedatos = BaseDatos::getConexion('ProveedorMySQL', '127.0.0.1', 'mamian', '', 'c9');
             
-        }
-        
-        public static function encontrar($id){
-            $resultado = self::where('id', $id);
-            return $resultado[0];
         }
         
         public static function where ($campo, $valor){
             $obj = null;
+            
             self::getConnection();
-            $query = "SELECT * FROM" . stat::$tabla . " WHERE " . $campo . " = ?";
+            $query = "SELECT * FROM " . static::$tabla . " WHERE " . $campo . " = ?";
             $resultados = self::$basedatos->ejecutar($query, null, array($valor));
             
             if($resultados){
@@ -32,6 +28,26 @@
             }
             
             return $obj;
+        }
+        
+        public static function all($order = null) {
+            $objs = null;
+            self::getConnection();
+            $query = "SELECT * FROM " . static ::$tabla;
+            
+            if ($order) {
+                $query.= $order;
+            }
+            $results = self::$basedatos->ejecutar($query, null, null);
+            
+            if ($results) {
+                $class = get_called_class();
+                foreach ($results as $index => $obj) {
+                    $objs[] = new $class($obj);
+                }
+            }
+            
+            return $objs;
         }
         
         public function save() {

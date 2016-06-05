@@ -1,5 +1,5 @@
 <?PHP
-    //require_once ('ProveedorMySQL.php');
+    require_once ('ProveedorMySQL.php');
     class ORM_Usuario {
         private static $basedatos;
         protected static $tabla = 'usuarios';
@@ -21,9 +21,10 @@
         public static function where ($campo, $valor){
             $obj = null;
             self::getConnection();
-            $query = "SELECT * FROM ". static::$tabla. " WHERE " . $campo . " = '" . $valor."'";
+            $query = "SELECT * FROM ". static::$tabla. " WHERE " . $campo . " = ?";
             
             $resultados = self::$basedatos->ejecutar($query, null, array($valor));
+            
             
             if($resultados){
                 $class = get_called_class();
@@ -31,6 +32,8 @@
                     $obj [] = new $class($resultados[$i]);
                 }
             }
+            
+            
             
             return $obj;
         }

@@ -6,7 +6,7 @@
         private static $_con;
         
         public function __construct($proveedor, $host, $usuario, $contrasena, $bd){
-           
+            
             if(!class_exists ($proveedor)){
                 throw new Exception ("El proveedor no existe o no esta siendo implementado");
             }
@@ -39,7 +39,7 @@
         }
         
         private function prepare ($sql, $parametros){
-            $ecaped = '';
+            $escaped = '';
             
             if($parametros){
                 foreach($parametros as $key => $value){
@@ -72,18 +72,21 @@
                     $escaped [] = $value;
                 }
                 
-                $this -> parametros = $ecaped;
                 
-                $q = preg_replace_callback("/(\?)/i", array($this, "reemplazarParametros"), $sql);
-                
-                return $q;
             }
+            
+            $this -> parametros = $escaped;
+                
+            $q = preg_replace_callback("/(\?)/i", array($this, "reemplazarParametros"), $sql);
+            
+            return $q;
             
         }
         
         private function enviarConsulta ($q, $parametros){
             
             $consulta = $this->prepare($q, $parametros);
+            
             $resultado = $this->proveedor->query($consulta);
             
             if($this->proveedor->getErrorNo()){
@@ -107,21 +110,26 @@
         }
         
         public function ejecutar($q, $array_index=null, $parametros=null){
-           
-            
+        
             $resultado = $this->enviarConsulta($q, $parametros);
+            
             
             if((is_object($resultado) || $this->proveedor->numRows($resultado) || $resultado) && ($resultado !== true && $resultado !== false)){
                 $arr = array();
                 while($row = $this->proveedor->fetchArray($resultado)){
+                   
                     if($array_index){
-                        $arr[$fila[$array_index]] = $fila;
+                        $arr[$row[$array_index]] = $row;
+                        
                     }else {
-                        $arr[] = $fila; 
+                        $arr[] = $row; 
                     }
+                    
                 }
                 return $arr;
             }
+            
+            print_r($this->proveedor->getErrorNo() ? false : true);
             return $this->proveedor->getErrorNo() ? false : true;
         }
         
