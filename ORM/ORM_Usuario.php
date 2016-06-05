@@ -1,17 +1,16 @@
 <?PHP
+    //require_once ('ProveedorMySQL.php');
     class ORM_Usuario {
         private static $basedatos;
         protected static $tabla = 'usuarios';
         
         function __construct(){
             self::getConnection();
-            echo 'llamaron';
         }
         
         private static function getConnection(){
             require_once('BaseDatos.php');
-            self::$basedatos = BaseDatos::getConexion('ProveedorMySQL.php', '127.0.0.1', 'mamian', 'desarrollo2', 'c9');
-            
+            self::$basedatos = BaseDatos::getConexion('ProveedorMySQL', '127.0.0.1', 'mamian', '', 'c9');
         }
         
         public static function encontrar($id){
@@ -22,7 +21,8 @@
         public static function where ($campo, $valor){
             $obj = null;
             self::getConnection();
-            $query = "SELECT * FROM usuarios WHERE " . $campo . " = " . $valor;
+            $query = "SELECT * FROM ". static::$tabla. " WHERE " . $campo . " = '" . $valor."'";
+            
             $resultados = self::$basedatos->ejecutar($query, null, array($valor));
             
             if($resultados){
