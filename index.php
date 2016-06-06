@@ -157,6 +157,7 @@
        <input type="date" class="form-control" placeholder="Fecha de Nacimiento" name="fecha" min="1900-01-01" max="2016-01-01">
        
      </div>
+     
      <input type="hidden" name="opcion" value="1">
 <button type="submit" class="log-btn" >registrarse</button>
      
