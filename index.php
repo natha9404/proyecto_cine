@@ -116,9 +116,9 @@
        <input type="password" class="form-control" placeholder="Password" name="Passwod">
        <i class="fa fa-lock"></i>
      </div>
-     <div>
+     <div class="form-group">
        <input type="date" class="form-control" placeholder="Fecha" name="fecha">
-      
+       
      </div>
      <input type="hidden" name="opcion" value="1">
 <button type="submit" class="log-btn" >registrarse</button>
