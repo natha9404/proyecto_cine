@@ -29,6 +29,13 @@
 	}
 
 	
-
+	$post = Usuario::find_by_nombres('edison felipe');
+	$post -> contrasena = '123456';
+	$post->save();
+	
+	echo $post->contrasena;
+	
+	$hola = Usuario::find_by_usuario('mamian');
+	$hola->delete();
 	
 ?>

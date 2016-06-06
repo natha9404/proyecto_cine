@@ -1,11 +1,11 @@
 <?PHP
     class Usuario {
-        private $usuario;
-        private $contrasena;
-        private $nombres;   
-        private $apellidos;
-        private $fecha_nacimiento;
-        private $email;
+        public $usuario;
+        public $contrasena;
+        public $nombres;   
+        public $apellidos;
+        public $fecha_nacimiento;
+        public $email;
     }
 
 ?>

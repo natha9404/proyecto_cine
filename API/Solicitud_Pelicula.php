@@ -3,7 +3,7 @@
     class Solicitu_Pelicula {
         const _API_URL_ = "http://api.themoviedb.org/3/";
         
-        private $_apikey;
+        private static $_apikey = 'c7f7381bc44cd24b332ccc18f24fc126';
         private $_leng;
         private $_imgUrl;
         
@@ -54,7 +54,7 @@
         public function posterPelicula($idPelicula){
             $posters = $this -> infoPelicula($idPelicula, "images", false);
             $posters = $posters['posters'];
-            return posters;
+            return $posters;
         }
         
         public function actoresPelicula($idPelicula){
