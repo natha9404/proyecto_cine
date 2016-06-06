@@ -2,6 +2,7 @@
     class ORM {
         private static $basedatos;
         protected static $tabla;
+        protected static $ident;
         
         function __construct(){
             self::getConnection();
@@ -50,8 +51,14 @@
             return $objs;
         }
         
-        public function save() {
-            $values = get_object_vars($this);
+        public function update (){
+            $query;
+            
+        }
+        
+        
+        public function save($id, $columnas) {
+            /*$values = get_object_vars($this);
             $filtered = null;
             foreach ($values as $key => $value) {
                 if ($value !== null && $value !== '' && strpos($key, 'obj_') === false && $key !== 'id') {
@@ -60,18 +67,18 @@
                     }
                     $filtered[$key] = $value;
                 }
-            }
+            }*/
             $columns = array_keys($filtered);
             if ($this->id) {
                 $columns = join(" = ?, ", $columns);
                 $columns.= ' = ?';
-                $query = "UPDATE " . static ::$table . " SET $columns WHERE id =" . $this->id;
+                $query = "UPDATE " . static ::$table . " SET $columns WHERE ". $this->$ident. " = " . $this->id;
             } else {
                 $params = join(", ", array_fill(0, count($columns), "?"));
                 $columns = join(", ", $columns);
                 $query = "INSERT INTO " . static ::$table . " ($columns) VALUES ($params)";
             }
-            $result = self::$database->execute($query, null, $filtered);
+            $result = self::$database->ejecutar($query, null, $filtered);
             if ($result) {
                 $result = array('error' => false, 'message' => self::$database->getInsertedID());
             } else {

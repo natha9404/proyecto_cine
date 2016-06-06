@@ -20,4 +20,6 @@
     $dato = get_object_vars($dos[0]);
     echo($dato['usuario']);
     var_dump($dato);
+    
+    Usuario_ORM::guardarUsuarios('dianaelisa', '654321', '11@22', '1989-09-29', 'diana elisa', 'morales camacho')
 ?>
