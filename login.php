@@ -4,6 +4,18 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+ <?php
+		session_start();
+		//manejamos en sesion el nombre del usuario que se ha logeado
+		if (!isset($_SESSION['username'])){
+    		
+    
+		}
+		if (! empty($_SESSION['username'])) 
+	$_SESSION['username'];
+?>
+
+
 <html>
 	<head>
 		<title>Future Imperfect by HTML5 UP</title>
@@ -25,8 +37,20 @@
 						<nav class="links">
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
-							  <li><a href="index.php">REGISTRARSE</a></li>
-							  <li>&nbsp;</li>
+                             
+                              <li>
+                              <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION['username'])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="logout.php">Cerrar Sesion</a>';
+ 				else
+ 				echo '<a href="login.php">Iniciar Sesion</a>';
+ 				 ?>
+  </li>
+                              
+						
 							</ul>
 						</nav>
 						<nav class="main">
@@ -57,6 +81,20 @@
 						<!-- Links -->
 							<section>
 								<ul class="links">
+									 
+									
+									 <li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				
+ 				 ?>
+									</li>
+									
+									
 									<li>
 										<a href="Estrenos.php">
 										<h2>ESTRENOS</h2>
@@ -64,6 +102,7 @@
 										</a>
 									</li>
 									<li>
+
 										<a href="Mejor_puntuadas.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
@@ -87,33 +126,59 @@
 							
 
 					</section>
+					<div id="main">
+<form action="procesar.php" method="POST">
+						<!-- Post -->
+							<div class="login-form">
+     <h1>Iniciar Sesion:</h1>
+  
+       
+     <div class="form-group ">
+       <input type="text" class="form-control" placeholder="Username " name="UserName">
+       <i class="fa fa-user"></i>
+     </div>
+     <div class="form-group log-status">
+       <input type="password" class="form-control" placeholder="Password" name="Passwod">
+       <i class="fa fa-lock"></i>
+     </div>
+     
+     
+     <input type="hidden" name="opcion" value="2">
+<button type="submit" class="log-btn" >Iniciar</button>
+     
+    </form>
+   </div>
 
 				<!-- Main -->
+	<!--
 	<div id="main">
 
  <form action="procesar.php" method="POST">
-						<!-- Post -->
+						<!-- Post 
 							<div class="login-form">
      <h1>Login</h1>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Username " id="UserName">
+     
+     	
+       <input type="text" class="form-control" placeholder="Username" id="UserName">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group log-status">
        <input type="password" class="form-control" placeholder="Password" id="Passwod">
        <i class="fa fa-lock"></i>
      </div>
-      <span class="alert">Invalid Credentials</span>
+     	
+      <!--<span class="alert">Invalid Credentials</span>
       
       <input type="hidden" name="opcion" value="2">
       
-<button type="button" class="log-btn" >Iniciar Sesion</button>
+<button type="submit" class="log-btn" >Iniciar Sesion</button>
 
 </form>
      
     
    </div>
-
+-->
 
 <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 

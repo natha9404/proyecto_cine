@@ -4,13 +4,25 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+ <?php
+		session_start();
+		//manejamos en sesion el nombre del usuario que se ha logeado
+		if (!isset($_SESSION['username'])){
+    		
+    
+		}
+		if (! empty($_SESSION['username'])) 
+	$_SESSION['username'];
+?>
+
+
 <html>
 	<head>
 		<title>Future Imperfect by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/Mas_Visitadas.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -25,8 +37,19 @@
 						<nav class="links">
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
+                             
+                              <li>
+                              <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION['username'])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="logout.php">Cerrar Sesion</a>';
+ 				else
+ 				echo '<a href="login.php">Iniciar Sesion</a>';
+ 				 ?>
+  </li>
                               
-							  <li><a href="#">INICIAR SESION</a></li>
 						
 							</ul>
 						</nav>
@@ -46,7 +69,6 @@
 					</header>
 
 				<!-- Menu -->
-					<!-- Menu -->
 					<section id="menu">
 
 						<!-- Search -->
@@ -59,6 +81,20 @@
 						<!-- Links -->
 							<section>
 								<ul class="links">
+									 
+									
+									 <li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				
+ 				 ?>
+									</li>
+									
+									
 									<li>
 										<a href="Estrenos.php">
 										<h2>ESTRENOS</h2>
@@ -66,6 +102,7 @@
 										</a>
 									</li>
 									<li>
+
 										<a href="Mejor_puntuadas.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>
@@ -84,7 +121,6 @@
 									</li>
 								</ul>
 							</section>
-
 						<!-- Actions -->
 							
 

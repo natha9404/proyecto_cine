@@ -32,14 +32,17 @@
 		
 		$usuario = Usuario::find_by_usuario($UserName);
 		$pass = $usuario->contrasena;
-		
+		//echo $pass;
+		//echo $Passwod;
+		//echo 'cualquier cosa';
+		//echo $UserName;
 		if($Passwod == $pass){
 			session_start();
 			$_SESSION['username'] = $UserName;
 	
 			header('Location: '.'Pagina_Pelicula_login.php');
 		}else{
-			header('Location'.'login_error.php');
+			header('Location: '.'login_error.php');
 		}
 		
 		
@@ -48,13 +51,13 @@
 	}
 
 	
-	$post = Usuario::find_by_nombres('edison felipe');
+	/*$post = Usuario::find_by_nombres('edison felipe');
 	$post -> contrasena = '123456';
 	$post->save();
 	
 	echo $post->contrasena;
 	
 	$hola = Usuario::find_by_usuario('mamian');
-	$hola->delete();
+	$hola->delete();*/
 	
 ?>
