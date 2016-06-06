@@ -16,7 +16,7 @@
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
 	
-	$algo = procesar::encontrar_usuario($_SESSION['username']);
+	$algo = procesar::listar();
 	
 
 	
@@ -64,7 +64,7 @@
 				 if (! empty($_SESSION['username'])) 
 				 
 				 //FALTA CREAR LOGOUT
- 				 echo '<a href="mi_cuenta.php">Mi Cuenta</a>';
+ 				 echo '<a href="reportes.php">Reportes</a>';
  			
  				 ?>
   </li>
@@ -149,45 +149,16 @@
 
 				<!-- Main -->
 	<div id="main">
-<form action="procesar.php" method="POST">
-						<!-- Post -->
-							<div class="login-form">
-     <h1>Modifica tus datos:</h1>
-     
-     <div class="form-group ">
-       <input type="text" class="form-control" value=<?PHP echo $algo->usuario; ?> name="UserName" disable>
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="text" class="form-control" value=<?PHP echo $algo->nombres; ?> name="nombre">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="text" class="form-control" value=<?PHP echo $algo->apellidos; ?> name="apellido">
-       <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
-       <input type="email" class="form-control" value=<?PHP echo $algo->email; ?> name="email">
-       <i class="fa fa-user"></i>
-     </div>
-     
-     <div class="form-group log-status">
-       <input type="password" class="form-control" value=<?PHP echo $algo->contrasena; ?> name="Passwod">
-       <i class="fa fa-lock"></i>
-     </div>
-     
-     
-     <input type="hidden" name="opcion" value="3">
-<button type="submit" class="log-btn" >Modificar</button>
-     
-    </form>
-    
-    <form action="procesar.php" method="POST">
-    	
-    	 <input type="hidden" name="opcion" value="4">
-<button type="submit" class="log-btn" >Eliminar Cuenta</button>
-    	
-     </form>	
+
+						<!-- Post --> <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
+						<!-- Post ---> 
+							<article class="post">
+							  <header> </header>
+                              <center><h3> USUARIOS</h3></center>
+								
+							</article>
+	
    
    
    
@@ -573,7 +544,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								<li><a href="#" class="button big next">Next Page</a></li>
 							</ul>
  -->
-					</div>
+					
 
 				<!-- Sidebar -->
 	<section id="sidebar">
