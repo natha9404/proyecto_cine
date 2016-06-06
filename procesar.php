@@ -26,7 +26,24 @@
 		$_SESSION['username'] = $UserName;
 
 		header('Location: '.'Pagina_Pelicula_login.php');
-	}else if($opcion == 2){ // registrar pelicula
+	}else if($opcion == 2){ // iniciar sesion
+		$UserName = $_POST['UserName'];
+		$Passwod = $_POST['Passwod'];
+		
+		$usuario = Usuario::find_by_usuario($UserName);
+		$pass = $usuario->contrasena;
+		
+		if($Passwod == $pass){
+			session_start();
+			$_SESSION['username'] = $UserName;
+	
+			header('Location: '.'Pagina_Pelicula_login.php');
+		}else{
+			header('Location'.'login_error.php');
+		}
+		
+		
+	}else if($opcion == 3){ // registrar pelicula
 
 	}
 
