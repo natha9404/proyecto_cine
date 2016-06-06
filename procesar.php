@@ -11,6 +11,7 @@
 		$email = $_POST['email'];
 		$UserName = $_POST['UserName'];
 		$Passwod = $_POST['Passwod'];
+		$fecha = $_POST['fecha'];
 
 		$usuario = new Usuario();
 		$usuario->usuario = $UserName;
@@ -18,6 +19,7 @@
 		$usuario->apellidos = $apellido;
 		$usuario->contrasena = $Passwod;
 		$usuario->email = $email;
+		$usuario->fecha_nacimiento = $fecha;
 		
 		$usuario->save();
 		session_start();
