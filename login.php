@@ -25,7 +25,7 @@
 						<nav class="links">
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
-							  <li><a href="#">REGISTRARSE</a></li>
+							  <li><a href="index.php">REGISTRARSE</a></li>
 							  <li>&nbsp;</li>
 							</ul>
 						</nav>
@@ -91,6 +91,7 @@
 				<!-- Main -->
 	<div id="main">
 
+ <form action="procesar.php" method="POST">
 						<!-- Post -->
 							<div class="login-form">
      <h1>Login</h1>
@@ -103,7 +104,12 @@
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Invalid Credentials</span>
-<button type="button" class="log-btn" ><a href="Pagina_Pelicula_login.php">Log in</button>
+      
+      <input type="hidden" name="opcion" value="2">
+      
+<button type="button" class="log-btn" >Iniciar Sesion</button>
+
+</form>
      
     
    </div>
