@@ -4,6 +4,18 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+ <?php
+		session_start();
+		//manejamos en sesion el nombre del usuario que se ha logeado
+		if (!isset($_SESSION['username'])){
+    		
+    
+		}
+		if (! empty($_SESSION['username'])) 
+	$_SESSION['username'];
+?>
+
+
 <html>
 	<head>
 		<title>Future Imperfect by HTML5 UP</title>
@@ -25,8 +37,19 @@
 						<nav class="links">
 							<ul>
 							  <li><a href="#">EN CARTELERA</a></li>
+                             
+                              <li>
+                              <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION['username'])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="logout.php">Cerrar Sesion</a>';
+ 				else
+ 				echo '<a href="login.php">Iniciar Sesion</a>';
+ 				 ?>
+  </li>
                               
-							  <li><a href="#">INICIAR SESION</a></li>
 						
 							</ul>
 						</nav>
@@ -58,6 +81,20 @@
 						<!-- Links -->
 							<section>
 								<ul class="links">
+									 
+									
+									 <li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				
+ 				 ?>
+									</li>
+									
+									
 									<li>
 										<a href="Estrenos.php">
 										<h2>ESTRENOS</h2>
@@ -65,6 +102,7 @@
 										</a>
 									</li>
 									<li>
+
 										<a href="Mejor_puntuadas.php">
 										<h2>MEJOR PUNTUADAS</h2>
 										</a>

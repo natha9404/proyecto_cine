@@ -41,7 +41,7 @@
                               <li>
                               <?php
               //CREAR INICIO SESION 
-				 if (! empty($_SESSION["usuario"])) 
+				 if (! empty($_SESSION['username'])) 
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="logout.php">Cerrar Sesion</a>';
@@ -86,7 +86,7 @@
 									 <li>
 										 <?php
               //CREAR INICIO SESION 
-				 if (! empty($_SESSION["usuario"])) 
+				 if (! empty($_SESSION["username"])) 
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
