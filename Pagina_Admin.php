@@ -156,7 +156,87 @@
 							<article class="post">
 							  <header> </header>
                               <center><h3> USUARIOS</h3></center>
-								
+									<table>
+										<thead>
+											<td>
+												<h3>Usuario</h3>
+											</td>
+											
+											<td>
+												<h3>Nombre</h3>
+											</td>
+											
+											<td>
+												<h3>Apellido</h3>
+											</td>
+											
+											<td>
+												<h3>Email</h3>
+											</td>
+											
+											<td>
+												<h3>Fecha Nacimiento</h3>
+											</td>
+											
+											<td></td>
+											
+										</thead>
+										
+										<tbody>
+											<?PHP
+												$numero = count($algo);
+												if ($numero >0){
+													for($i=0; $i<$numero; $i++ ){
+														?>
+														
+														<tr>
+															<form action="procesar.php" method="POST">
+															<td>
+																<input type="text" value = <?PHP echo $algo[$i]->usuario;?> name="UserName" disable>
+															</td>
+															
+															<td>
+																<?PHP
+																	echo $algo[$i]->nombres;
+																?>
+															</td>
+															
+															<td>
+																<?PHP
+																	echo $algo[$i]->apellidos;
+																?>
+															</td>
+															
+															<td>
+																<?PHP
+																	echo $algo[$i]->email;
+																?>
+															</td>
+															
+															<td>
+																<?PHP
+																	$fecha = date_format($algo[$i]->fecha_nacimiento, 'd/m/Y');
+																	
+																	echo $fecha;
+																?>
+															</td>
+															
+															<td>
+															
+    	
+															    	<input type="hidden" name="opcion" value="5">
+																	<button type="submit" class="log-btn" >Eliminar Cuenta</button>
+														    	
+														     	</form>
+															</td>
+														</tr>
+														
+														<?PHP
+													}
+												}
+											?>
+										</tbody>
+									</table>
 							</article>
 	
    
@@ -550,12 +630,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 	<section id="sidebar">
 
 						<!-- Intro -->
-							<section id="intro">
-<header>
-	    <h2>CINE DEL BUENO</h2>
-								  <p>Desarrollado por: puntosoft</p>
-								</header>
-							</section>
+							
 
 						<!-- Mini Posts 
 							<section>

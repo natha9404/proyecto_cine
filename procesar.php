@@ -89,8 +89,6 @@
 		header('Location: '.'Pagina_Pelicula_login.php');
 	}else if($opcion ==4) {
 		
-		
-		
 			session_start();
 			$hola = Usuario::find_by_usuario($_SESSION['username']);
 			echo 'hola';
@@ -98,6 +96,12 @@
 			$hola->delete();
 			header('Location: '.'logout.php');
 		
+	}else if($opcion ==5){
+		$UserName = $_POST['UserName'];
+		$para = Usuario::find_by_usuario($UserName);
+		$para->delete();
+		session_start();
+		header('Location: '.'Pagina_Admin.php');
 	}
 	
 	
@@ -114,6 +118,11 @@
 		public function listar(){
 			$lista = Usuario::all();
 			return $lista;
+		}
+		
+		public function eliminar_admin($usuario){
+			$dos = Usuario::find_by_usuario($usuario);
+			$dos->delete();
 		}
 	}
 	
