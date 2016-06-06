@@ -117,7 +117,7 @@
        <i class="fa fa-lock"></i>
      </div>
      <div class="form-group">
-       <input type="date" class="form-control" placeholder="Fecha" name="fecha">
+       <input type="date" class="form-control" placeholder="Fecha de Nacimiento" name="fecha" min="1900-01-01" max="2016-01-01">
        
      </div>
      <input type="hidden" name="opcion" value="1">
