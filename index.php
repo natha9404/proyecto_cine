@@ -92,33 +92,34 @@
 
 				<!-- Main -->
 	<div id="main">
-
+<form action="procesar.php" method="POST">
 						<!-- Post -->
 							<div class="login-form">
      <h1>Registrate:</h1>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Nombre" id="nombre">
+       <input type="text" class="form-control" placeholder="Nombre" name="nombre">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Apellido" id="apellido">
+       <input type="text" class="form-control" placeholder="Apellido" name="apellido">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group ">
-       <input type="email" class="form-control" placeholder="Email " id="email">
+       <input type="email" class="form-control" placeholder="Email " name="email">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Username " id="UserName">
+       <input type="text" class="form-control" placeholder="Username " name="UserName">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group log-status">
-       <input type="password" class="form-control" placeholder="Password" id="Passwod">
+       <input type="password" class="form-control" placeholder="Password" name="Passwod">
        <i class="fa fa-lock"></i>
      </div>
-<button type="button" class="log-btn" ><a href="Pagina_Pelicula_login.php"> registrarse</button>
+     <input type="hidden" name="opcion" value="1">
+<button type="submit" class="log-btn" >registrarse</button>
      
-    
+    </form>
    </div>
 
 
