@@ -145,7 +145,7 @@
 <form action="procesar.php" method="POST">
 						<!-- Post -->
 							<div class="login-form">
-     <h1>Registrate:</h1>
+     <h1>Modifica tus datos:</h1>
      <div class="form-group ">
        <input type="text" class="form-control" placeholder="Nombre" name="nombre">
        <i class="fa fa-user"></i>
@@ -172,7 +172,7 @@
      </div>
      
      <input type="hidden" name="opcion" value="1">
-<button type="submit" class="log-btn" >registrarse</button>
+<button type="submit" class="log-btn" >Modificar</button>
      
     </form>
    </div>
