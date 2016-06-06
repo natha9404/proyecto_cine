@@ -23,7 +23,7 @@
 		session_start();
 		$_SESSION['username'] = $UserName;
 
-		header('Location: '.'bienvenido_usuario_nuevo.php');
+		header('Location: '.'Pagina_Pelicula_login.php');
 	}else if($opcion == 2){ // registrar pelicula
 
 	}
