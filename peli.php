@@ -178,12 +178,17 @@
 										//$json = json_decode($tmdb->searchMovie($_GET['term']));
 										//$json = json_decode($tmdb->titulosPelicula('551'));
 										
-										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
-										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/62211?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 										//https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126
 										//http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=Phoenix
+										//http://api.themoviedb.org/3/configuration?api_key=c7f7381bc44cd24b332ccc18f24fc126
+										//http://api.themoviedb.org/3/search/movie?query=Monsters+University&api_key=c7f7381bc44cd24b332ccc18f24fc126
+										//http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c7f7381bc44cd24b332ccc18f24fc126
+										//http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c7f7381bc44cd24b332ccc18f24fc126
+										//https://api.themoviedb.org/3/movie/popular?api_key=c7f7381bc44cd24b332ccc18f24fc126
 										
 										$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
 				
@@ -265,7 +270,11 @@
 										echo $JSON_trailer->results[0]->key;
 										echo "</p>";*/
 										//echo "trailer: "."<src="."https://www.youtube.com/watch?v=".$JSON_trailer->results[0]->key.">"; 
+										
+										echo "<p>";
 										echo "<center><iframe width=560 height=315 src='"."https://www.youtube.com/embed/".$JSON_trailer->results[0]->key."'frameborder=0 allowfullscreen></iframe></a></center>";
+										echo "</p>";
+										
 										//echo "<center><iframe width=560 height=315 src='"."https://www.youtube.com/embed/vKa_wDG2mxg"."'frameborder=0 allowfullscreen></iframe></a></center>";
 										//echo "<center><iframe width=560 height=315 src='".$JSON_PANORAMIO_PHP->homepage."'frameborder=0 allowfullscreen></iframe></a></center>";
 										//echo "<img src='" . $JSON_PANORAMIO_PHP->poster_path . "' width='" . $foto_actual->width . "' height='" . $foto_actual->height . "'>";
@@ -275,7 +284,7 @@
 										//echo "</p>";
 										
 										echo "<p>";
-										echo "Titulo Original: " . $JSON_PANORAMIO_PHP->original_title;
+										echo "Titulo Original: " . $JSON_PANORAMIO_PHP->title;
 										echo "</p>";
 										
 										echo "<p>" . "Año: ". substr($JSON_PANORAMIO_PHP->release_date,0,4) . "</p>";
@@ -333,11 +342,13 @@
 										   echo "<small>" . $foto_actual->photo_title . ", por " . $foto_actual->owner_name . "</small>";
 										   echo "</p>";
 										}*/
+										
+										//http://image.tmdb.org/t/p/w185/bI7SEgPy1SEZFmOeYmP8keskIrU.jpg/
 									?>
 								
 								
 								
-								
+								<!--
 								<p>Reparto: Nina Hoss, Ronald Zehrfeld, Uwe Preuss, Nina Kunzendorf, Michael Maertens, Uwe Preuss, Imogen Kogge, Eva Bay, Kirsten Block, Megan Gay, Valerie Koch </p>
 								
 								<p>Sinopsis :Una cantante es traicionada y enviada a un campo de concentración. Al finalizar su calvario, vuelve con la cara totalmente desfigurada y pide a un eminente cirujano que se la reconstruya para que sea lo más parecida a como era antes. Recuperada de la operación empieza a buscar a su marido, un pianista. Pero el reencuentro no es lo que ella esperaba. </p>
@@ -347,6 +358,8 @@
 								<p>Cine Colombia Cosmocentro Martes, Mayo 3 de 2016 </p>
 								<p>| Calle 5 N° 50-103 2D - Hablada en Español 3D - Hablada en Español 11:40 am01:50 pm02:50 pm 03:30 pm05:30 pm06:30 pm08:50 pm09:30 pm <br>
 							  </p>
+							  -->
+							  
 								<footer>
 									<ul class="actions">
 										<li></li>

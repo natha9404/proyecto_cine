@@ -150,27 +150,35 @@
 											return $texto;
 										}
 							
-							$URL_API_PANORAMIO = "http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=deadpool";
+							$URL_API = "http://api.themoviedb.org/3/movie/62211?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+							//$URL_API = "http://api.themoviedb.org/3/movie/62211?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 							
-							$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
+							//deadpool : 293660
+							$contenido_url = leer_contenido_completo($URL_API);
 							
 							$JSON_PANORAMIO_PHP = json_decode($contenido_url);
 							
 							
 							echo "<tr id="."filas".">";
+								for($i=0;$i<3;$i++){
 								echo "<td>";
 									echo "<a href="."peli.php".">";
 										//echo "<img src="."./images/peliculas/espias.png"."></img>";
-										foreach($JSON_PANORAMIO_PHP as $movie){
-											echo "<p>";
+										//echo "<img src="."http://image.tmdb.org/t/p/w185/".$JSON_PANORAMIO_PHP->poster_path."></img>";
+										
+										//echo $JSON_PANORAMIO_PHP->title;
+										//foreach($JSON_PANORAMIO_PHP as $movie){
+											//echo "<p>";
 											//echo $JSON_PANORAMIO_PHP->original_title;
-											echo $movie->original_title;
+											//echo $movie->original_title;
 											//echo "holaaaaaaaaaaaa";
-											echo "</p>";
+											//echo "</p>";
+											echo "<img src="."http://image.tmdb.org/t/p/w185/".$JSON_PANORAMIO_PHP->poster_path."></img>";
 											
-										}
+										//}
 									echo "</a>";
 								echo "</td>";
+								}
 							echo "</tr>";
 							?>
 							<tr id="filas">

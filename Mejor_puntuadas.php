@@ -141,25 +141,43 @@
 						
 						<table class="tablaPeliculas">
 							<?php 
+							function leer_contenido_completo($url){
+								$fichero_url = fopen ($url, "r");
+									$texto = "";
+									while ($trozo = fgets($fichero_url, 1024)){
+    									$texto .= $trozo;
+									}
+									return $texto;
+							}	
 							
-							for($i=0;$i<)
+							$URL_API = "https://api.themoviedb.org/3/movie/popular?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 							
-							echo "<tr id="."filas".">";
+							$contenido_url = leer_contenido_completo($URL_API);
+							
+							$JSON = json_decode($contenido_url);
+							
+							$x=0;
+							
+							foreach($JSON->results as $movie){
+								if(($x % 3 == 0)||($x==0)){
+									echo "<tr id=filas>";
+								}
 								echo "<td>";
 									echo "<a href="."peli.php".">";
-										//echo "<img src="."./images/peliculas/espias.png"."></img>";
-										foreach($JSON_PANORAMIO_PHP as $movie){
-											echo "<p>";
-											//echo $JSON_PANORAMIO_PHP->original_title;
-											echo $movie->original_title;
-											//echo "holaaaaaaaaaaaa";
-											echo "</p>";
-											
-										}
+											echo "<img src="."http://image.tmdb.org/t/p/w185/".$movie->poster_path."></img>";
+											//echo "<small>".$movie->original_title."</small>";
+											echo "<p>".$movie->original_title."</p>";
 									echo "</a>";
 								echo "</td>";
-							echo "</tr>";
+								if((($x + 1) % 3) == 0){
+									echo "</tr>";
+								}
+								$x += 1;
+							}
+							
 							?>
+							
+							<!--
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
@@ -195,6 +213,7 @@
 									</a>
 								</td>
 							</tr>
+							-->
 						</table>
 							
 						
