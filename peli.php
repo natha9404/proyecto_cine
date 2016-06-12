@@ -136,7 +136,9 @@
 							<article class="post">
 							  <header> </header>
                               <center><h3> PELICULAS</h3></center>
+								<!--
 								<center><iframe width="560" height="315" src="https://www.youtube.com/embed/vKa_wDG2mxg" frameborder="0" allowfullscreen></iframe></a></center>
+								-->
                                 
                               <div class="ec-stars-wrapper">
 	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
@@ -152,11 +154,192 @@
 </div>
 <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
                                 
-								<p>Título originaL: Phoenix </p>
-								<p>Año: 2014</p>
-								<p> Duración: 98 min </p>
+								
+									<?php
+									
+										include 'API/TMDb.php';
+										//include 'API/tmbd-api.php';
+										
+										$api_key = 'c7f7381bc44cd24b332ccc18f24fc126';
+										
+										//$tmdb2 = new TMDB();
+										//$tmdb = new TMDb($api_key);
+										
+										function leer_contenido_completo($url){
+											$fichero_url = fopen ($url, "r");
+											$texto = "";
+											while ($trozo = fgets($fichero_url, 1024)){
+    											$texto .= $trozo;
+											}
+											return $texto;
+										}
+										
+										
+										//$json = json_decode($tmdb->searchMovie($_GET['term']));
+										//$json = json_decode($tmdb->titulosPelicula('551'));
+										
+										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc";
+										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										//https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126
+										//http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=Phoenix
+										
+										$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
+				
+										
+										/*echo "<p>";
+										echo $contenido_url;
+										echo "</p>";*/
+										
+										$JSON_PANORAMIO_PHP = json_decode($contenido_url);
+										//$JSON_PANORAMIO_PHP = json_decode($tmdb->searchMovie('Phoenix'));
+										
+										/////////////////////////////////////////
+										/*
+										//$json = json_decode($tmdb->searchMovie('Phoenix'));
+										//$json = json_decode($tmdb->getMovie("551"));
+										
+										
+										//$URL = "http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=deadpool";
+										$URL = "https://api.themoviedb.org/3/movie/553?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										$contenido = leer_contenido_completo($URL);
+										$json= json_decode($contenido);
+										
+										
+										
+										$response = array();
+
+										$i=0;
+										foreach($json as $movie){
+										
+											// Only movies existing in the IMDB catalog (and are not adult) are shown
+										
+											if(!$movie->imdb_id || $movie->adult) continue;
+											if($i >= 8 ) break;
+										
+											// The jQuery autocomplete widget shows the label in the drop down,
+											// and adds the value property to the text box.
+										
+											$response[$i]['value'] = $movie->name;
+											$response[$i]['label'] = $movie->name . ' <small>(' . date('Y',strtotime($movie->released)).')</small>';
+											$i++;
+										}
+										
+										echo $json->original_title;
+										//echo $response[0]['value'];
+										*/
+										/*
+										$jsondec = json_encode($response);
+										echo "<p>";
+										//echo json_encode($response);
+										echo "</p>";
+										*/
+										/////////////////////////////////////////
+										/*
+										$arreglo = $tmdb->getMovie("551");
+										//$string = $tmdb->getVersion('movie/550');
+										//$a = $tmdb->searchMovie('Phoenix');
+										$filepath = $JSON_PANORAMIO_PHP->poster_path;
+										//$imagen = $tmdb->getImageUrl($filepath,IMAGE_POSTER,60);
+										$cast = $tmdb->getMovieCast(550);
+										echo "<p>";
+										echo $arreglo[0]->original_title;
+										//echo $string;
+										//echo $JSON_PANORAMIO_PHP;
+										//echo $a[0];
+										//echo "<img src=".$imagen."></img>";
+										echo "</p>";
+										*/
+										//$JSON_PANORAMIO_PHP = json_decode($tmdb->getMovie("551"));
+										
+										$id = $JSON_PANORAMIO_PHP->id;
+										$URL_trailer="http://api.themoviedb.org/3/movie/".$id."/videos?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										$contenido_url_trailer = leer_contenido_completo($URL_trailer);
+										/*echo "<p>";
+										echo $contenido_url_trailer;
+										echo "</p>";*/
+										
+										$JSON_trailer = json_decode($contenido_url_trailer);
+										/*echo "<p>";
+										echo $JSON_trailer->results[0]->key;
+										echo "</p>";*/
+										//echo "trailer: "."<src="."https://www.youtube.com/watch?v=".$JSON_trailer->results[0]->key.">"; 
+										echo "<center><iframe width=560 height=315 src='"."https://www.youtube.com/embed/".$JSON_trailer->results[0]->key."'frameborder=0 allowfullscreen></iframe></a></center>";
+										//echo "<center><iframe width=560 height=315 src='"."https://www.youtube.com/embed/vKa_wDG2mxg"."'frameborder=0 allowfullscreen></iframe></a></center>";
+										//echo "<center><iframe width=560 height=315 src='".$JSON_PANORAMIO_PHP->homepage."'frameborder=0 allowfullscreen></iframe></a></center>";
+										//echo "<img src='" . $JSON_PANORAMIO_PHP->poster_path . "' width='" . $foto_actual->width . "' height='" . $foto_actual->height . "'>";
+										
+										//echo "<p>";
+										//echo "<img src='" . $JSON_PANORAMIO_PHP->poster_path . "'>";
+										//echo "</p>";
+										
+										echo "<p>";
+										echo "Titulo Original: " . $JSON_PANORAMIO_PHP->original_title;
+										echo "</p>";
+										
+										echo "<p>" . "Año: ". substr($JSON_PANORAMIO_PHP->release_date,0,4) . "</p>";
+										
+										echo "<p>" . "Duración: ". $JSON_PANORAMIO_PHP->runtime. " min" . "</p>";
+										
+										echo "<p>" . "Género: ". $JSON_PANORAMIO_PHP->genres[0]->name . "</p>";
+										
+										echo "<p>" . "Sinopsis: ". $JSON_PANORAMIO_PHP->overview . "</p>";
+										
+										/*
+										echo "<p>";
+										echo "Género: ";
+										for($i=0; next(genres))
+										echo $JSON_PANORAMIO_PHP->genres[0]->name
+										echo "</p>";
+										*/
+										
+										/*echo "<hr>";
+										
+										//echo $JSON_PANORAMIO_PHP->count; //esto muestra el número de fotos totales que existen en Panoramio en esa localización
+										for ($i=0; $i<count($JSON_PANORAMIO_PHP->photos); $i++){
+										   $foto_actual = $JSON_PANORAMIO_PHP->photos[$i];
+										   echo "<p>";
+										   echo "<img src='" . $foto_actual->photo_file_url . "' width='" . $foto_actual->width . "' height='" . $foto_actual->height . "'>";
+										   echo "<br>";
+										   echo "<small>" . $foto_actual->photo_title . ", por " . $foto_actual->owner_name . "</small>";
+										   echo "</p>";
+										}*/
+										/*function leer_contenido_completo($url){
+											$fichero_url = fopen ($url, "r");
+											$texto = "";
+											while ($trozo = fgets($fichero_url, 1024)){
+    											$texto .= $trozo;
+											}
+											return $texto;
+										}
+										
+										$URL_API_PANORAMIO = "http://www.panoramio.com/map/get_panoramas.php?order=popularity&set=full&from=0&to=5&minx=-0.35&miny=39.44&maxx=-0.34&maxy=39.46&size=medium";
+										
+										$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
+										
+										echo $contenido_url;
+										
+										$JSON_PANORAMIO_PHP = json_decode($contenido_url);
+										
+										echo "<hr>";
+										
+										//echo $JSON_PANORAMIO_PHP->count; //esto muestra el número de fotos totales que existen en Panoramio en esa localización
+										for ($i=0; $i<count($JSON_PANORAMIO_PHP->photos); $i++){
+										   $foto_actual = $JSON_PANORAMIO_PHP->photos[$i];
+										   echo "<p>";
+										   echo "<img src='" . $foto_actual->photo_file_url . "' width='" . $foto_actual->width . "' height='" . $foto_actual->height . "'>";
+										   echo "<br>";
+										   echo "<small>" . $foto_actual->photo_title . ", por " . $foto_actual->owner_name . "</small>";
+										   echo "</p>";
+										}*/
+									?>
+								
+								
+								
+								
 								<p>Reparto: Nina Hoss, Ronald Zehrfeld, Uwe Preuss, Nina Kunzendorf, Michael Maertens, Uwe Preuss, Imogen Kogge, Eva Bay, Kirsten Block, Megan Gay, Valerie Koch </p>
-								<p>Género: Drama </p>
+								
 								<p>Sinopsis :Una cantante es traicionada y enviada a un campo de concentración. Al finalizar su calvario, vuelve con la cara totalmente desfigurada y pide a un eminente cirujano que se la reconstruya para que sea lo más parecida a como era antes. Recuperada de la operación empieza a buscar a su marido, un pianista. Pero el reencuentro no es lo que ella esperaba. </p>
 								<p>(FILMAFFINITY) </p>
 								<p>Cine Colombia Chipichape Martes, Mayo 3 de 2016 </p>

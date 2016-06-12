@@ -140,10 +140,30 @@
 								</header>
 						
 						<table class="tablaPeliculas">
+							<?php 
+							
+							for($i=0;$i<)
+							
+							echo "<tr id="."filas".">";
+								echo "<td>";
+									echo "<a href="."peli.php".">";
+										//echo "<img src="."./images/peliculas/espias.png"."></img>";
+										foreach($JSON_PANORAMIO_PHP as $movie){
+											echo "<p>";
+											//echo $JSON_PANORAMIO_PHP->original_title;
+											echo $movie->original_title;
+											//echo "holaaaaaaaaaaaa";
+											echo "</p>";
+											
+										}
+									echo "</a>";
+								echo "</td>";
+							echo "</tr>";
+							?>
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
-										<img src="./images/peliculas/espias.png"></img>
+										<p>fdsdkafldf</p>
 									</a>
 								</td>
 								<td>

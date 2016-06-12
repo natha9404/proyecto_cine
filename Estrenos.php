@@ -139,6 +139,40 @@
 								</header>
 						
 						<table class="tablaPeliculas">
+							<?php
+							
+							function leer_contenido_completo($url){
+											$fichero_url = fopen ($url, "r");
+											$texto = "";
+											while ($trozo = fgets($fichero_url, 1024)){
+    											$texto .= $trozo;
+											}
+											return $texto;
+										}
+							
+							$URL_API_PANORAMIO = "http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=deadpool";
+							
+							$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
+							
+							$JSON_PANORAMIO_PHP = json_decode($contenido_url);
+							
+							
+							echo "<tr id="."filas".">";
+								echo "<td>";
+									echo "<a href="."peli.php".">";
+										//echo "<img src="."./images/peliculas/espias.png"."></img>";
+										foreach($JSON_PANORAMIO_PHP as $movie){
+											echo "<p>";
+											//echo $JSON_PANORAMIO_PHP->original_title;
+											echo $movie->original_title;
+											//echo "holaaaaaaaaaaaa";
+											echo "</p>";
+											
+										}
+									echo "</a>";
+								echo "</td>";
+							echo "</tr>";
+							?>
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
