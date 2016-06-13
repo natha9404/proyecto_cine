@@ -139,48 +139,43 @@
 								</header>
 						
 						<table class="tablaPeliculas">
-							<?php
-							
+							<?php 
 							function leer_contenido_completo($url){
-											$fichero_url = fopen ($url, "r");
-											$texto = "";
-											while ($trozo = fgets($fichero_url, 1024)){
-    											$texto .= $trozo;
-											}
-											return $texto;
-										}
+								$fichero_url = fopen ($url, "r");
+									$texto = "";
+									while ($trozo = fgets($fichero_url, 1024)){
+    									$texto .= $trozo;
+									}
+									return $texto;
+							}	
 							
-							$URL_API = "http://api.themoviedb.org/3/movie/62211?api_key=c7f7381bc44cd24b332ccc18f24fc126";
-							//$URL_API = "http://api.themoviedb.org/3/movie/62211?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+							$URL_API = "https://api.themoviedb.org/3/movie/upcoming?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 							
-							//deadpool : 293660
 							$contenido_url = leer_contenido_completo($URL_API);
 							
-							$JSON_PANORAMIO_PHP = json_decode($contenido_url);
+							$JSON = json_decode($contenido_url);
 							
+							$x=0;
 							
-							echo "<tr id="."filas".">";
-								for($i=0;$i<3;$i++){
+							foreach($JSON->results as $movie){
+								if(($x % 3 == 0)||($x==0)){
+									echo "<tr id=filas>";
+								}
 								echo "<td>";
 									echo "<a href="."peli.php".">";
-										//echo "<img src="."./images/peliculas/espias.png"."></img>";
-										//echo "<img src="."http://image.tmdb.org/t/p/w185/".$JSON_PANORAMIO_PHP->poster_path."></img>";
-										
-										//echo $JSON_PANORAMIO_PHP->title;
-										//foreach($JSON_PANORAMIO_PHP as $movie){
-											//echo "<p>";
-											//echo $JSON_PANORAMIO_PHP->original_title;
-											//echo $movie->original_title;
-											//echo "holaaaaaaaaaaaa";
-											//echo "</p>";
-											echo "<img src="."http://image.tmdb.org/t/p/w185/".$JSON_PANORAMIO_PHP->poster_path."></img>";
-											
-										//}
+											echo "<img src="."http://image.tmdb.org/t/p/w185/".$movie->poster_path."></img>";
+											//echo "<small>".$movie->original_title."</small>";
+											echo "<p>".$movie->original_title."</p>";
 									echo "</a>";
 								echo "</td>";
+								if((($x + 1) % 3) == 0){
+									echo "</tr>";
 								}
-							echo "</tr>";
+								$x += 1;
+							}
+							
 							?>
+							<!--
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
@@ -216,10 +211,11 @@
 									</a>
 								</td>
 							</tr>
+							-->
 						</table>
 							
 						
-
+						<p><a href="Estrenos_pg2.php">Pagina Siguente</a></p>
 						
                                 
 

@@ -150,7 +150,7 @@
 									return $texto;
 							}	
 							
-							$URL_API = "https://api.themoviedb.org/3/movie/popular?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+							$URL_API = "https://api.themoviedb.org/3/movie/popular?page=3&api_key=c7f7381bc44cd24b332ccc18f24fc126";
 							
 							$contenido_url = leer_contenido_completo($URL_API);
 							
@@ -217,7 +217,7 @@
 						</table>
 						
 						
-						<p><a href="Mejor_puntuadas_pg2.php">Pagina Siguente</a></p>
+						<p><a href="Mejor_puntuadas_pg2.php">Pagina Anterior</a></p>
 						
 
 						<!-- Footer -->

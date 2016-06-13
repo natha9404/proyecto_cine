@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <!--
 	Future Imperfect by HTML5 UP
 	html5up.net | @n33co
@@ -135,7 +134,7 @@
 
 		
 <header>
-	    <h2>MEJOR PUNTUADAS</h2>
+	    <h2>ESTRENOS</h2>
 								  <p>Desarrollado por: puntosoft</p>
 								</header>
 						
@@ -150,7 +149,7 @@
 									return $texto;
 							}	
 							
-							$URL_API = "https://api.themoviedb.org/3/movie/popular?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+							$URL_API = "https://api.themoviedb.org/3/movie/upcoming?page=3&api_key=c7f7381bc44cd24b332ccc18f24fc126";
 							
 							$contenido_url = leer_contenido_completo($URL_API);
 							
@@ -176,12 +175,11 @@
 							}
 							
 							?>
-							
 							<!--
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
-										<p>fdsdkafldf</p>
+										<img src="./images/peliculas/espias.png"></img>
 									</a>
 								</td>
 								<td>
@@ -215,10 +213,11 @@
 							</tr>
 							-->
 						</table>
+							
+						<p><a href="Estrenos.php">Pagina Anterior</a></p>
+						<p><a href="Estrenos_pg3.php">Pagina Siguente</a></p>
 						
-						
-						<p><a href="Mejor_puntuadas_pg2.php">Pagina Siguente</a></p>
-						
+                                
 
 						<!-- Footer -->
 							<section id="footer">
