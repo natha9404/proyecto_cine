@@ -16,7 +16,7 @@
 	$_SESSION['username'];
 	
 	$nombre= $_GET['query'];
-	//$nombre= "Will%20Smith";
+	//$nombre= "arnold";
 ?>
 
 
@@ -167,7 +167,9 @@
 
 		
 <header>
-	    <h2>ESTRENOS</h2>
+	    <?PHP
+	     echo "<h2>ESTRENOS " .$nombre."</h2>"
+		?>
 								  <p>Desarrollado por: puntosoft</p>
 								</header>
 						
@@ -182,7 +184,7 @@
 									return $texto;
 							}	
 							
-							$URL_API = "http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=".$nombre;
+							$URL_API = "http://api.themoviedb.org/3/discover/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&primary_release_year=".$nombre;
 							
 							$contenido_url = leer_contenido_completo($URL_API);
 							
