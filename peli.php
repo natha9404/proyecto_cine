@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<meta name="keywords" content="jquery, ajax, plugin" />
 <!--
 	Future Imperfect by HTML5 UP
 	html5up.net | @n33co
@@ -141,22 +142,22 @@
 								<!--
 								<center><iframe width="560" height="315" src="https://www.youtube.com/embed/vKa_wDG2mxg" frameborder="0" allowfullscreen></iframe></a></center>
 								-->
-                                
-                              <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-    <a href="#" data-value="1" title="Votar con 6 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 7 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 8 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 9 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 10 estrellas">&#9733;</a>
-</div>
-<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
-                                
 								
+								
+                                
+                                <form name="formulario" method="POST" action="guardar_en_la_base_de_datos.php"> 
+
+<input name="calificacion" type="number" min="1" max="10" value="-" /> 
+
+
+<input type="submit" value="Calificar"> 
+</form> 
+                                
+  
+                   	
+
+		
+		
 									<?php
 									
 										include 'API/TMDb.php';
