@@ -146,6 +146,8 @@
 						<!-- Post -->
 							<div class="login-form">
      <h1>Registrate:</h1>
+      <font color='red'>  <h4>*Las contraseñas no coinciden</h4></font>
+   
      <div class="form-group ">
        <input type="text" class="form-control" placeholder="Nombre" name="nombre">
        <i class="fa fa-user"></i>

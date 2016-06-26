@@ -13,20 +13,32 @@
 		$UserName = $_POST['UserName'];
 		$Passwod = $_POST['Passwod'];
 		$fecha = $_POST['fecha'];
-
-		$usuario = new Usuario();
-		$usuario->usuario = $UserName;
-		$usuario->nombres = $nombre;
-		$usuario->apellidos = $apellido;
-		$usuario->contrasena = $Passwod;
-		$usuario->email = $email;
-		$usuario->fecha_nacimiento = $fecha;
+		$Confirmar = $_POST['Confirmar'];
 		
-		$usuario->save();
-		session_start();
-		$_SESSION['username'] = $UserName;
+		if($Passwod == $Confirmar)
+			{
 
-		header('Location: '.'Pagina_Pelicula_login.php');
+			$usuario = new Usuario();
+			$usuario->usuario = $UserName;
+			$usuario->nombres = $nombre;
+			$usuario->apellidos = $apellido;
+			$usuario->contrasena = $Passwod;
+			$usuario->email = $email;
+			$usuario->fecha_nacimiento = $fecha;
+			
+			$usuario->save();
+			session_start();
+			$_SESSION['username'] = $UserName;
+	
+			header('Location: '.'Pagina_Pelicula_login.php');
+			
+			}
+		else{
+			
+			header('Location: '.'index1.php');
+			
+		}	
+		
 	}else if($opcion == 2){ // iniciar sesion
 		$UserName = $_POST['UserName'];
 		$Passwod = $_POST['Passwod'];
