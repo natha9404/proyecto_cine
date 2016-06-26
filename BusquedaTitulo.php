@@ -15,8 +15,8 @@
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
 	
-	$nombre= $_GET['nombre'];
-	$nombre= "Will%20Smith";
+	$nombre= $_GET['query'];
+	//$nombre= "Will%20Smith";
 ?>
 
 
@@ -61,7 +61,7 @@
 							<ul>
 								<li class="search">
 									<a class="fa-search" href="#search">Search</a>
-									<form id="search" method="get" action="#">
+									<form id="search" method="get" action="BusquedaTitulo.php">
 										<input type="text" name="query" placeholder="Search" />
 									</form>
 								</li>
@@ -77,7 +77,7 @@
 
 						<!-- Search -->
 							<section>
-								<form class="search" method="get" action="#">
+								<form class="search" method="get" action="BusquedaTitulo.php">
 									<input type="text" name="query" placeholder="Search" />
 								</form>
 							</section>
