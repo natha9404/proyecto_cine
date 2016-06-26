@@ -50,7 +50,7 @@
 		//echo 'cualquier cosa';
 		//echo $UserName;
 		if($Passwod == $pass){
-			if($UserName = 'admin'){
+			if($UserName == 'admin'){
 				session_start();
 				$_SESSION['username'] = $UserName;
 		
