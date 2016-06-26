@@ -13,6 +13,8 @@
 		}
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
+	
+	$id_pelicula = $_GET['id'];
 ?>
 
 
@@ -180,7 +182,7 @@
 										//$json = json_decode($tmdb->searchMovie($_GET['term']));
 										//$json = json_decode($tmdb->titulosPelicula('551'));
 										
-										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/62211?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/".$id_pelicula."?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
