@@ -1531,7 +1531,7 @@
 	}
 	
 	h2, h1 {
-		color: #F1F1F1;
+		color: #FACC2E;
 		font-family: "Raleway", Helvetica, sans-serif;
 		font-weight: 800;
 		letter-spacing: 0.25em;
@@ -2926,6 +2926,7 @@
 		#titulopelicula{
 			width: 200px;
 			text-align: center;
+			color: #FACC2E;
 		}
 
 		table th {
@@ -3298,6 +3299,19 @@
 	#intro header h2 {
 		font-size: 2em;
 		font-weight: 900;
+	}
+	
+	#titulo {
+		position: absolute;
+		top: 150px;
+		left: 100px;
+		width: 250px;
+	}
+	
+	#subtitulo {
+		position: absolute;
+		top: 260px;
+		left: 100px;
 	}
 
 	#intro header p {

@@ -54,7 +54,7 @@
 				session_start();
 				$_SESSION['username'] = $UserName;
 		
-				header('Location: '.'Pagina_Admin.php');
+				header('Location: '.'Mejor_punutadas.php');
 			}else{
 				session_start();
 				$_SESSION['username'] = $UserName;

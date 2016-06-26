@@ -36,7 +36,7 @@
 						<h1><img src="images/logo.png" width="250" height="52"></a></h1>
 						<nav class="links">
 							<ul>
-							  <li><a href="#">EN CARTELERA</a></li>
+							  <li><a href="EnCartelera.php">EN CARTELERA</a></li>
                              
                               <li>
                               <?php
@@ -163,7 +163,7 @@
 									echo "<tr id=filas>";
 								}
 								echo "<td>";
-									echo "<a href="."peli.php".">";
+									echo "<a href="."peli.php"."?id=".$movie->id.">";
 											echo "<img src="."http://image.tmdb.org/t/p/w185/".$movie->poster_path."></img>";
 											//echo "<small>".$movie->original_title."</small>";
 											echo "<p id="."titulopelicula".">".$movie->original_title."</p>";

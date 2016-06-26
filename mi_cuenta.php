@@ -43,7 +43,7 @@
 						<h1><img src="images/logo.png" width="250" height="52"></a></h1>
 						<nav class="links">
 							<ul>
-							  <li><a href="#">EN CARTELERA</a></li>
+							  <li><a href="EnCartelera.php">EN CARTELERA</a></li>
                              
                               <li>
                               <?php

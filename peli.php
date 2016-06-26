@@ -13,6 +13,8 @@
 		}
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
+	
+	$id_pelicula = $_GET['id'];
 ?>
 
 
@@ -36,7 +38,7 @@
 						<h1><img src="images/logo.png" width="250" height="52"></a></h1>
 						<nav class="links">
 							<ul>
-							  <li><a href="#">EN CARTELERA</a></li>
+							  <li><a href="EnCartelera.php">EN CARTELERA</a></li>
                              
                               <li>
                               <?php
@@ -179,8 +181,6 @@
 										
 										//$json = json_decode($tmdb->searchMovie($_GET['term']));
 										//$json = json_decode($tmdb->titulosPelicula('551'));
-										
-										$id_pelicula=325789;
 										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/".$id_pelicula."?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
 										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc";
