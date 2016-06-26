@@ -165,7 +165,7 @@
 									echo "<a href="."peli.php".">";
 											echo "<img src="."http://image.tmdb.org/t/p/w185/".$movie->poster_path."></img>";
 											//echo "<small>".$movie->original_title."</small>";
-											echo "<p>".$movie->original_title."</p>";
+											echo "<p id="."titulopelicula".">".$movie->original_title."</p>";
 									echo "</a>";
 								echo "</td>";
 								if((($x + 1) % 3) == 0){
@@ -214,7 +214,7 @@
 							-->
 						</table>
 							
-						<p><a href="Estrenos.php">Pagina Anterior</a></p>
+						<p><a href="Estrenos_pg2.php">Pagina Anterior</a></p>
 						<p><a href="Estrenos_pg3.php">Pagina Siguente</a></p>
 						
                                 
