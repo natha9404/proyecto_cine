@@ -134,7 +134,7 @@
 
 		
 <header>
-	    <h2>ESTRENOS</h2>
+	    <h2>EN CARTELERA</h2>
 								  <p>Desarrollado por: puntosoft</p>
 								</header>
 						
