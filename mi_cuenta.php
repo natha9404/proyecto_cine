@@ -182,10 +182,10 @@
      
     </form>
     
-    <form action="procesar.php" method="POST">
+    <form name="tuformulario" action="procesar.php" method="POST">
     	
     	 <input type="hidden" name="opcion" value="4">
-<button type="submit" class="log-btn" >Eliminar Cuenta</button>
+<button type="button" class="log-btn" onclick="pregunta()" >Eliminar Cuenta</button>
     	
      </form>	
    
@@ -196,6 +196,15 @@
     
     
    </div>
+   
+   
+   <script language="JavaScript"> 
+		function pregunta(){ 
+		    if (confirm('¿Estas seguro de cancelar su cuenta?')){ 
+		       document.tuformulario.submit() 
+		    } 
+		} 
+	</script> 
 
 
 <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
