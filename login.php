@@ -46,7 +46,7 @@
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="logout.php">Cerrar Sesion</a>';
  				else
- 				echo '<a href="login.php">Iniciar Sesion</a>';
+ 				echo '<a href="index.php">Registrarse</a>';
  				 ?>
   </li>
                               
