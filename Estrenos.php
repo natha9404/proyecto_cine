@@ -169,7 +169,6 @@
 											//echo "<small>".$movie->original_title."</small>";
 											echo "<p id="."titulopelicula".">".$movie->original_title."</p>";
 											
-											
 									echo "</a>";
 								
 									
