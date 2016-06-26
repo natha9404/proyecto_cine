@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <!--
 	Future Imperfect by HTML5 UP
 	html5up.net | @n33co
@@ -135,49 +134,62 @@
 
 		
 <header>
-  <h2>Bienvenido user prueba</h2>
-  <p>MI LISTA DE</p>
-</header>
+	    <h2>ESTRENOS</h2>
+								  <p>Desarrollado por: puntosoft</p>
+								</header>
 						
 						<table class="tablaPeliculas">
+							<?php 
+							function leer_contenido_completo($url){
+								$fichero_url = fopen ($url, "r");
+									$texto = "";
+									while ($trozo = fgets($fichero_url, 1024)){
+    									$texto .= $trozo;
+									}
+									return $texto;
+							}	
+							
+							$URL_API = "https://api.themoviedb.org/3/movie/now_playing?page=2&api_key=c7f7381bc44cd24b332ccc18f24fc126";
+							
+							$contenido_url = leer_contenido_completo($URL_API);
+							
+							$JSON = json_decode($contenido_url);
+							
+							$x=0;
+							
+							foreach($JSON->results as $movie){
+								if(($x % 3 == 0)||($x==0)){
+									echo "<tr id=filas>";
+								}
+								echo "<td>";
+									echo "<a href="."peli.php"."?id=".$movie->id.">";
+											echo "<img src="."http://image.tmdb.org/t/p/w185/".$movie->poster_path."></img>";
+											//echo "<small>".$movie->original_title."</small>";
+											echo "<p id="."titulopelicula".">".$movie->original_title."</p>";
+									echo "</a>";
+								echo "</td>";
+								if((($x + 1) % 3) == 0){
+									echo "</tr>";
+								}
+								$x += 1;
+							}
+							
+							?>
+							<!--
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/espias.png"></img>
-                                         <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                        <p><a href="mi_lista.php"> Quitar de mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/san_andreas.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/child44.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
 									</a>
 								</td>
 							</tr>
@@ -186,47 +198,24 @@
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/snoopy.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/phoenix.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/fant4stic.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                        <p><a href="mi_lista.php"> Quitar de mi lista </p>
 									</a>
 								</td>
 							</tr>
+							-->
 						</table>
 							
-						
-
+						<p><a href="EnCartelera.php">Pagina Anterior</a></p>
+						<p><a href="EnCartelera_pg3.php">Pagina Siguente</a></p>
 						
                                 
 
