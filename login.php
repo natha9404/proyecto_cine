@@ -563,8 +563,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						<!-- Intro -->
 							<section id="intro">
 <header>
-	    <h2>CINE DEL BUENO</h2>
-								  <p>Desarrollado por: puntosoft</p>
+	    <h2 id="titulo">CINE DEL BUENO</h2>
+								  <p id="subtitulo">Desarrollado por: puntosoft</p>
 								</header>
 							</section>
 

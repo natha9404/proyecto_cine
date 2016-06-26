@@ -3299,6 +3299,19 @@
 		font-size: 2em;
 		font-weight: 900;
 	}
+	
+	#titulo {
+		position: absolute;
+		top: 150px;
+		left: 100px;
+		width: 250px;
+	}
+	
+	#subtitulo {
+		position: absolute;
+		top: 260px;
+		left: 100px;
+	}
 
 	#intro header p {
 		font-size: 0.8em;
