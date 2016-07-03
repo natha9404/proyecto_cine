@@ -16,7 +16,11 @@
 	$_SESSION['username'];
 	
 	$nombre= $_GET['query'];
-	//$nombre= "Will%20Smith";
+	
+	$nombre = str_replace(
+		array(' '), array('+'), $nombre
+		);
+	
 ?>
 
 
@@ -130,9 +134,30 @@
 											</li>
 											
 											<li>
-												<form id="search" method="get" action="BusquedaGenero.php">
-													<input type="text" name="query" placeholder="Genero" />
-												</form>
+												<form name="formulario" method="POST" action="BusquedaGenero.php"> 
+													<select name="mi_combobox"> 
+														<option value="valor_1">Accion</option> 
+														<option value="valor_2">Aventura</option>
+														<option value="valor_3">Animacion</option>
+														<option value="valor_4">Comedia</option>
+														<option value="valor_5">Crimen</option>
+														<option value="valor_6">Documentales</option>
+														<option value="valor_7">Drama</option>
+														<option value="valor_8">Familiar</option>
+														<option value="valor_9">Fantasia</option>
+														<option value="valor_10">Extranjero</option>
+														<option value="valor_11">Historia</option>
+														<option value="valor_12">Terror</option>
+														<option value="valor_13">Musica</option>
+														<option value="valor_14">Misterio</option>
+														<option value="valor_15">Romance</option>
+														<option value="valor_16">Ciencia Ficcion</option>
+														<option value="valor_17">Suspenso</option>
+														<option value="valor_18">Guerra</option>
+														<option value="valor_19">Vaqueros</option>
+													</select> 
+													<input type="submit" value="Guardar datos"> 
+												</form> 
 											</li>
 											
 											<li>
