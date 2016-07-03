@@ -15,6 +15,9 @@
 		$fecha = $_POST['fecha'];
 		$Confirmar = $_POST['Confirmar'];
 		
+		md
+		
+		
 		if($Passwod == $Confirmar)
 			{
 
@@ -22,7 +25,7 @@
 			$usuario->usuario = $UserName;
 			$usuario->nombres = $nombre;
 			$usuario->apellidos = $apellido;
-			$usuario->contrasena = $Passwod;
+			$usuario->contrasena = md5($Passwod);
 			$usuario->email = $email;
 			$usuario->fecha_nacimiento = $fecha;
 			
