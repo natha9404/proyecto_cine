@@ -4,7 +4,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
  <?php
-		require_once('ProcesarPelicula.php');
+		require_once('ProcesarGenero.php');
 		
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
@@ -15,11 +15,9 @@
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
 	
-	$nombre= $_GET['query'];
-	
-	$nombre = str_replace(
-		array(' '), array('+'), $nombre
-		);
+	$nombre= $_POST['mi_combobox'];
+	echo $nombre;
+	$id = ProcesarGenero::consultar($nombre);
 	
 ?>
 
@@ -136,25 +134,25 @@
 											<li>
 												<form name="formulario" method="POST" action="BusquedaGenero.php"> 
 													<select name="mi_combobox"> 
-														<option value="Accion">Accion</option> 
-														<option value="Aventura">Aventura</option>
-														<option value="Animacion">Animacion</option>
-														<option value="Comedia">Comedia</option>
-														<option value="Crimen">Crimen</option>
-														<option value="Documentales">Documentales</option>
-														<option value="Drama">Drama</option>
-														<option value="Familiar">Familiar</option>
-														<option value="Fantasia">Fantasia</option>
-														<option value="Extranjero">Extranjero</option>
-														<option value="Historia">Historia</option>
-														<option value="Terror">Terror</option>
-														<option value="Musica">Musica</option>
-														<option value="Misterio">Misterio</option>
-														<option value="Romance">Romance</option>
-														<option value="Ciencia Ficcion">Ciencia Ficcion</option>
-														<option value="Suspenso">Suspenso</option>
-														<option value="Guerra">Guerra</option>
-														<option value="Vaqueros">Vaqueros</option>
+														<option value="valor_1">Accion</option> 
+														<option value="valor_2">Aventura</option>
+														<option value="valor_3">Animacion</option>
+														<option value="valor_4">Comedia</option>
+														<option value="valor_5">Crimen</option>
+														<option value="valor_6">Documentales</option>
+														<option value="valor_7">Drama</option>
+														<option value="valor_8">Familiar</option>
+														<option value="valor_9">Fantasia</option>
+														<option value="valor_10">Extranjero</option>
+														<option value="valor_11">Historia</option>
+														<option value="valor_12">Terror</option>
+														<option value="valor_13">Musica</option>
+														<option value="valor_14">Misterio</option>
+														<option value="valor_15">Romance</option>
+														<option value="valor_16">Ciencia Ficcion</option>
+														<option value="valor_17">Suspenso</option>
+														<option value="valor_18">Guerra</option>
+														<option value="valor_19">~</option>
 													</select> 
 													<input type="submit" value="Guardar datos"> 
 												</form> 
@@ -207,7 +205,7 @@
 									return $texto;
 							}	
 							
-							$URL_API = "http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=".$nombre;
+							$URL_API = "https://api.themoviedb.org/3/discover/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&with_genres=".$id;
 							
 							$contenido_url = leer_contenido_completo($URL_API);
 							
