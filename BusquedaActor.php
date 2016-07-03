@@ -15,8 +15,8 @@
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
 	
-	$nombre= $_GET['query'];
-	//$nombre= "Will%20Smith";
+	//$nombre= $_GET['query'];
+	$nombre= "arnold";
 ?>
 
 
@@ -182,7 +182,7 @@
 									return $texto;
 							}	
 							
-							$URL_API = "http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=".$nombre;
+							$URL_API = "https://api.themoviedb.org/3/search/person?api_key=c7f7381bc44cd24b332ccc18f24fc126&search_type=ngram&query=".$nombre;
 							
 							$contenido_url = leer_contenido_completo($URL_API);
 							
