@@ -15,8 +15,6 @@
 		$fecha = $_POST['fecha'];
 		$Confirmar = $_POST['Confirmar'];
 		
-		md
-		
 		
 		if($Passwod == $Confirmar)
 			{
@@ -33,7 +31,7 @@
 			session_start();
 			$_SESSION['username'] = $UserName;
 	
-			header('Location: '.'Pagina_Pelicula_login.php');
+			header('Location: '.'EnCartelera.php');
 			
 			}
 		else{
@@ -52,7 +50,7 @@
 		//echo $Passwod;
 		//echo 'cualquier cosa';
 		//echo $UserName;
-		if($Passwod == $pass){
+		if(md5($Passwod) == $pass){
 			if($UserName == 'admin'){
 				session_start();
 				$_SESSION['username'] = $UserName;
@@ -62,7 +60,7 @@
 				session_start();
 				$_SESSION['username'] = $UserName;
 		
-				header('Location: '.'Pagina_Pelicula_login.php');
+				header('Location: '.'EnCartelera.php');
 			}
 			
 			
@@ -101,7 +99,7 @@
 		session_start();
 		$_SESSION['username'] = $UserName;
 
-		header('Location: '.'Pagina_Pelicula_login.php');
+		header('Location: '.'EnCartelera.php');
 	}else if($opcion ==4) {
 		
 			session_start();
