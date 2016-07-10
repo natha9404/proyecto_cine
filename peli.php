@@ -6,6 +6,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
  <?php
+ 
+
+	
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
 		if (!isset($_SESSION['username'])){
@@ -13,7 +16,15 @@
     
 		}
 		if (! empty($_SESSION['username'])) 
-	$_SESSION['username'];
+	
+	$nombre = $_SESSION['username'];
+	
+		require_once("ProcesarUsuariosListas.php");
+	
+	$listas = ProcesarUsuariosListas::listas($nombre);
+	
+	
+	$peli;
 	
 	$id_pelicula = $_GET['id'];
 ?>
@@ -23,6 +34,7 @@
 	<head>
 		<title>Future Imperfect by HTML5 UP</title>
 		<meta charset="utf-8" />
+	
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -52,7 +64,17 @@
  				echo '<a href="login.php">Iniciar Sesion</a>';
  				 ?>
   </li>
-                              
+                 
+                    <li>
+                              <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION['username'])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mi_cuenta.php">Mi Cuenta</a>';
+ 			
+ 				 ?>
+  </li>             
 						
 							</ul>
 						</nav>
@@ -93,9 +115,29 @@
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				 
+ 				
  				
  				 ?>
+ 				 	<form name="formulario" method="POST" action="mi_lista.php"> 
+													<a>Seleccione Lista a consultar: </a>
+													<select name="combobox"> 
+													
+														<?PHP
+															for ($i=0; $i < count($listas) ;$i++){
+																echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																//echo $listas[$lista]->nom_lista;
+															}
+														?>
+														<!--<option value="Vistas">Vistas</option> 
+														<option value="PorVer">Por Ver</option>-->
+													</select> 
+													<input type="submit" value="Cargar Lista"> 
+													
+													
+												</form> 
 									</li>
+									
 									
 									
 									<li>
@@ -116,6 +158,54 @@
 										
 										</a>
 									</li>
+									
+									<li class="subindice">
+										<a href="#subindice">
+											<h2>FILTRAR</h2>
+										</a>
+										<ul >
+											<li>
+												<form id="search" method="get" action="BusquedaActor.php">
+													<input type="text" name="query" placeholder="Actor" />
+												</form>
+											</li>
+											
+											<li>
+												<form name="formulario" method="POST" action="BusquedaGenero.php"> 
+													<select name="mi_combobox"> 
+														<option value="Accion">Accion</option> 
+														<option value="Aventura">Aventura</option>
+														<option value="Animacion">Animacion</option>
+														<option selected="selected" value="Comedia" >Comedia</option>
+														<option value="Crimen">Crimen</option>
+														<option value="Documentales">Documentales</option>
+														<option value="Drama">Drama</option>
+														<option value="Familiar">Familiar</option>
+														<option value="Fantasia">Fantasia</option>
+														<option value="Extranjero">Extranjero</option>
+														<option value="Historia">Historia</option>
+														<option value="Terror">Terror</option>
+														<option value="Musica">Musica</option>
+														<option value="Misterio">Misterio</option>
+														<option value="Romance">Romance</option>
+														<option value="Ciencia Ficcion">Ciencia Ficcion</option>
+														<option value="Suspenso">Suspenso</option>
+														<option value="Guerra">Guerra</option>
+														<option value="Vaqueros">Vaqueros</option>
+													</select> 
+													<input type="submit" value="Guardar datos"> 
+												</form> 
+											</li>
+											
+											<li>
+												<form id="search" method="get" action="BusquedaAno.php">
+													<input type="text" name="query" placeholder="año lanzamiento" />
+												</form>
+											</li>
+											
+										</ul>
+									</li>
+									
 									<li>
 										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
@@ -145,14 +235,99 @@
 								
 								
                                 
-                                <form name="formulario" method="POST" action="guardar_en_la_base_de_datos.php"> 
+                                <form name="formulario" method="POST" action="ProcesarCalificarPelicula.php"> 
 
-<input name="calificacion" type="number" min="1" max="10" value="-" /> 
+								<input name="calificacion" type="number" min="1" max="10" value="-" /> 
+								<?php echo"<input type='hidden' name='usuario' value='".$nombre."' />" ?>
+								<?php echo"<input type='hidden' name='peli' value='".$id_pelicula."' />"?>
+								<input type="hidden" name="opcion" value='1'/>
 
-
-<input type="submit" value="Calificar"> 
-</form> 
-                                
+								<input type="submit" value="Calificar"> 
+								</form> 
+								
+								
+								
+										
+												<form name="formulario" method="POST" action="ProcesarListaPelicula.php"> 
+													<a>Listas: </a>
+													<select name="mi_combobox"> 
+													
+														<?PHP
+															
+															/*###############################################*/
+															
+															include 'API/TMDb.php';
+															//include 'API/tmbd-api.php';
+															
+															$api_key = 'c7f7381bc44cd24b332ccc18f24fc126';
+															
+															
+															
+															//$tmdb2 = new TMDB();
+															//$tmdb = new TMDb($api_key);
+															
+															function leer_contenido_completo($url){
+																$fichero_url = fopen ($url, "r");
+																$texto = "";
+																while ($trozo = fgets($fichero_url, 1024)){
+					    											$texto .= $trozo;
+																}
+																return $texto;
+															}
+															
+															
+															//$json = json_decode($tmdb->searchMovie($_GET['term']));
+															//$json = json_decode($tmdb->titulosPelicula('551'));
+															$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/".$id_pelicula."?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+															//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+															//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc";
+															//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
+															//https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126
+															//http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=Phoenix
+															//http://api.themoviedb.org/3/configuration?api_key=c7f7381bc44cd24b332ccc18f24fc126
+															//http://api.themoviedb.org/3/search/movie?query=Monsters+University&api_key=c7f7381bc44cd24b332ccc18f24fc126
+															//http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c7f7381bc44cd24b332ccc18f24fc126
+															//http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c7f7381bc44cd24b332ccc18f24fc126
+															//https://api.themoviedb.org/3/movie/popular?api_key=c7f7381bc44cd24b332ccc18f24fc126
+															
+															$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
+									
+															
+															/*echo "<p>";
+															echo $contenido_url;
+															echo "</p>";*/
+															
+															$JSON_PANORAMIO_PHP = json_decode($contenido_url);
+															
+															$peli =$JSON_PANORAMIO_PHP->title;
+															//echo $peli;
+															/*########################################################################*/
+															
+														
+															for ($i=0; $i < count($listas) ;$i++){
+																echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																//echo $listas[$lista]->nom_lista;
+															}
+															echo "<input type='hidden' name='id_pelicula' value=".$id_pelicula.">";
+															$peli = str_replace(
+																array(' '), array('+'), $peli
+															);
+															
+															echo "<input type='hidden' name='id_usuario' value=".$nombre.">";
+															//echo ("Pelicula: ".$peli);
+															echo "<input type='hidden' name='nombre_peli' value=".$peli.">";
+															echo "<input type='hidden' name='opcion' value=1>";
+															
+														?>
+														<!--<option value="Vistas">Vistas</option> 
+														<option value="PorVer">Por Ver</option>-->
+													</select> 
+													<input type="submit" value="Añadir"> 
+													
+													
+												</form> 
+										
+											
   
                    	
 
@@ -160,48 +335,7 @@
 		
 									<?php
 									
-										include 'API/TMDb.php';
-										//include 'API/tmbd-api.php';
 										
-										$api_key = 'c7f7381bc44cd24b332ccc18f24fc126';
-										
-										
-										
-										//$tmdb2 = new TMDB();
-										//$tmdb = new TMDb($api_key);
-										
-										function leer_contenido_completo($url){
-											$fichero_url = fopen ($url, "r");
-											$texto = "";
-											while ($trozo = fgets($fichero_url, 1024)){
-    											$texto .= $trozo;
-											}
-											return $texto;
-										}
-										
-										
-										//$json = json_decode($tmdb->searchMovie($_GET['term']));
-										//$json = json_decode($tmdb->titulosPelicula('551'));
-										$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/".$id_pelicula."?api_key=c7f7381bc44cd24b332ccc18f24fc126";
-										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126";
-										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average.desc";
-										//$URL_API_PANORAMIO = "https://api.themoviedb.org/3/movie/550?api_key=c7f7381bc44cd24b332ccc18f24fc126";
-										//https://api.themoviedb.org/3/movie/254578?api_key=c7f7381bc44cd24b332ccc18f24fc126
-										//http://api.themoviedb.org/3/search/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=Phoenix
-										//http://api.themoviedb.org/3/configuration?api_key=c7f7381bc44cd24b332ccc18f24fc126
-										//http://api.themoviedb.org/3/search/movie?query=Monsters+University&api_key=c7f7381bc44cd24b332ccc18f24fc126
-										//http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c7f7381bc44cd24b332ccc18f24fc126
-										//http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c7f7381bc44cd24b332ccc18f24fc126
-										//https://api.themoviedb.org/3/movie/popular?api_key=c7f7381bc44cd24b332ccc18f24fc126
-										
-										$contenido_url = leer_contenido_completo($URL_API_PANORAMIO);
-				
-										
-										/*echo "<p>";
-										echo $contenido_url;
-										echo "</p>";*/
-										
-										$JSON_PANORAMIO_PHP = json_decode($contenido_url);
 										//$JSON_PANORAMIO_PHP = json_decode($tmdb->searchMovie('Phoenix'));
 										
 										/////////////////////////////////////////
@@ -289,6 +423,7 @@
 										
 										echo "<p>";
 										echo "Titulo Original: " . $JSON_PANORAMIO_PHP->title;
+										
 										echo "</p>";
 										
 										echo "<p>" . "Año: ". substr($JSON_PANORAMIO_PHP->release_date,0,4) . "</p>";

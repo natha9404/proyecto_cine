@@ -13,13 +13,21 @@
     
 		}
 		if (! empty($_SESSION['username'])) 
-	$_SESSION['username'];
+	$nombreUser = $_SESSION['username'];
 	
 	$nombre= $_GET['query'];
 	
 	$nombre = str_replace(
 		array(' '), array('+'), $nombre
 		);
+		
+			require_once("ProcesarUsuariosListas.php");
+		$listas = ProcesarUsuariosListas::listas($nombreUser);
+	
+	
+	$peli;
+	
+	$id_pelicula = $_GET['id'];
 	
 ?>
 
@@ -57,6 +65,16 @@
  				echo '<a href="login.php">Iniciar Sesion</a>';
  				 ?>
   </li>
+     <li>
+                              <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION['username'])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mi_cuenta.php">Mi Cuenta</a>';
+ 			
+ 				 ?>
+  </li>
                               
 						
 							</ul>
@@ -91,15 +109,35 @@
 								<ul class="links">
 									 
 									
-									 <li>
+										 <li>
 										 <?php
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				 
+ 				
  				
  				 ?>
+ 				 	<form name="formulario" method="POST" action="mi_lista.php"> 
+													<a>Seleccione Lista a consultar: </a>
+													<select name="combobox"> 
+													
+														<?PHP
+															for ($i=0; $i < count($listas) ;$i++){
+																echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																//echo $listas[$lista]->nom_lista;
+															}
+														?>
+														<!--<option value="Vistas">Vistas</option> 
+														<option value="PorVer">Por Ver</option>-->
+													</select> 
+													<input type="submit" value="Cargar Lista"> 
+													
+													
+												</form> 
+									</li>
 									</li>
 									
 									

@@ -5,6 +5,12 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
  <?php
+	
+	
+		require_once("ProcesarUsuariosListas.php");
+		require_once("ProcesarListaPelicula.php");
+		
+		
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
 		if (!isset($_SESSION['username'])){
@@ -12,7 +18,25 @@
     
 		}
 		if (! empty($_SESSION['username'])) 
-	$_SESSION['username'];
+	
+	$nombre = $_SESSION['username'];
+	
+	//echo("algoo");
+	
+	$listas = ProcesarUsuariosListas::listas($nombre);
+	$lista = $_POST['combobox'];
+	
+	//echo ($lista);
+	$algo = ProcesarListaPelicula::listar($nombre, $lista);
+	
+	$nom_peli = $_POST['mi_combobox'];
+	
+	
+	
+	//echo $nom_peli;
+	
+	
+	
 ?>
 
 
@@ -49,7 +73,17 @@
  				echo '<a href="login.php">Iniciar Sesion</a>';
  				 ?>
   </li>
-                              
+                 
+                    <li>
+                              <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION['username'])) 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mi_cuenta.php">Mi Cuenta</a>';
+ 			
+ 				 ?>
+  </li>             
 						
 							</ul>
 						</nav>
@@ -90,8 +124,27 @@
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				 
+ 				
  				
  				 ?>
+ 				 	<form name="formulario" method="POST" action="mi_lista.php"> 
+													<a>Seleccione Lista a consultar: </a>
+													<select name="combobox"> 
+													
+														<?PHP
+															for ($i=0; $i < count($listas) ;$i++){
+																echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																//echo $listas[$lista]->nom_lista;
+															}
+														?>
+														<!--<option value="Vistas">Vistas</option> 
+														<option value="PorVer">Por Ver</option>-->
+													</select> 
+													<input type="submit" value="Cargar Lista"> 
+													
+													
+												</form> 
 									</li>
 									
 									
@@ -113,6 +166,54 @@
 										
 										</a>
 									</li>
+									
+									<li class="subindice">
+										<a href="#subindice">
+											<h2>FILTRAR</h2>
+										</a>
+										<ul >
+											<li>
+												<form id="search" method="get" action="BusquedaActor.php">
+													<input type="text" name="query" placeholder="Actor" />
+												</form>
+											</li>
+											
+											<li>
+												<form name="formulario" method="POST" action="BusquedaGenero.php"> 
+													<select name="mi_combobox"> 
+														<option value="Accion">Accion</option> 
+														<option value="Aventura">Aventura</option>
+														<option value="Animacion">Animacion</option>
+														<option value="Comedia">Comedia</option>
+														<option value="Crimen">Crimen</option>
+														<option value="Documentales">Documentales</option>
+														<option value="Drama">Drama</option>
+														<option value="Familiar">Familiar</option>
+														<option value="Fantasia">Fantasia</option>
+														<option value="Extranjero">Extranjero</option>
+														<option value="Historia">Historia</option>
+														<option value="Terror">Terror</option>
+														<option value="Musica">Musica</option>
+														<option value="Misterio">Misterio</option>
+														<option value="Romance">Romance</option>
+														<option value="Ciencia Ficcion">Ciencia Ficcion</option>
+														<option value="Suspenso">Suspenso</option>
+														<option value="Guerra">Guerra</option>
+														<option value="Vaqueros">Vaqueros</option>
+													</select> 
+													<input type="submit" value="Guardar datos"> 
+												</form> 
+											</li>
+											
+											<li>
+												<form id="search" method="get" action="BusquedaAno.php">
+													<input type="text" name="query" placeholder="año lanzamiento" />
+												</form>
+											</li>
+											
+										</ul>
+									</li>
+									
 									<li>
 										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
@@ -136,94 +237,77 @@
 		
 <header>
   <h2>Bienvenido user prueba</h2>
-  <p>MI LISTA DE</p>
+ 
+  
+  
 </header>
 						
-						<table class="tablaPeliculas">
-							<tr id="filas">
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/espias.png"></img>
-                                         <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                        <p><a href="mi_lista.php"> Quitar de mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/san_andreas.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/child44.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
-									</a>
-								</td>
-							</tr>
-							
-							<trid="filas">
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/snoopy.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/phoenix.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                         <p><a href="mi_lista.php"> Quitar de mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/fant4stic.png"></img>
-                                        <div class="ec-stars-wrapper">
-	<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-	<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-	<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-	<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-	<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-</div>
-                                        <p><a href="mi_lista.php"> Quitar de mi lista </p>
-									</a>
-								</td>
-							</tr>
-						</table>
+					
+						<article class="post">
+							  <header> </header>
+                              <center><h3> USUARIOS</h3></center>
+									<table>
+										<thead>
+											<td>
+												<h3>Nombre Pelicula</h3>
+											</td>
+											
+											<td>
+												<h3>Combo</h3>
+											</td>
+											
+										
+											
+											<td>
+												<h3>Eliminar</h3>
+											</td>
+											
+										
+											
+										</thead>
+										
+										<tbody>
+											<?PHP
+												$numero = sizeof($algo);
+												//echo $numero;
+												if ($numero >0){
+													for($i=0; $i<$numero; $i++ ){
+														
+														
+														echo "<tr>";
+															//<!--form action="procesar.php" method="POST"--->
+															echo "<td>";
+																
+																//echo "<p>";
+																/*echo <input type="text" value = <?PHP echo $algo[$i]->usuario;?> name="UserName" disable>*/
+																echo $algo[$i]->nom_pelicula;
+																//echo "</p>";
+															
+															echo "</td>";
+															
+															echo "<td>";
+																
+																echo $algo[$i]->nom_lista;	
+																
+															echo "</td>";
+															
+															echo"<td>";
+															
+    	
+															    echo "<input type='hidden' name='opcion' value='5'>";
+																echo "<button type='submit' class='log-btn' >Eliminar Cuenta</button>";
+														    	
+														     	//<!--/form-->
+															echo "</td>";
+														echo "</tr>";
+														
+														
+													}
+												}
+											?>
+										</tbody>
+									</table>
+							</article>
 							
 						
 
