@@ -14,9 +14,20 @@
     
 		}
 		if (! empty($_SESSION['username'])) 
-	$_SESSION['username'];
+	$nombre = $_SESSION['username'];
 	
 	$algo = procesar::encontrar_usuario($_SESSION['username']);
+	
+	
+	
+		require_once("ProcesarUsuariosListas.php");
+	
+	$listas = ProcesarUsuariosListas::listas($nombre);
+	
+	
+	$peli;
+	
+	$id_pelicula = $_GET['id'];
 	
 
 	
@@ -102,15 +113,35 @@
 								<ul class="links">
 									 
 									
-									 <li>
+										 <li>
 										 <?php
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				 
+ 				
  				
  				 ?>
+ 				 	<form name="formulario" method="POST" action="mi_lista.php"> 
+													<a>Seleccione Lista a consultar: </a>
+													<select name="combobox"> 
+													
+														<?PHP
+															for ($i=0; $i < count($listas) ;$i++){
+																echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																//echo $listas[$lista]->nom_lista;
+															}
+														?>
+														<!--<option value="Vistas">Vistas</option> 
+														<option value="PorVer">Por Ver</option>-->
+													</select> 
+													<input type="submit" value="Cargar Lista"> 
+													
+													
+												</form> 
+									</li>
 									</li>
 									
 									
@@ -133,6 +164,54 @@
 										
 										</a>
 									</li>
+									
+									<li class="subindice">
+										<a href="#subindice">
+											<h2>FILTRAR</h2>
+										</a>
+										<ul >
+											<li>
+												<form id="search" method="get" action="BusquedaActor.php">
+													<input type="text" name="query" placeholder="Actor" />
+												</form>
+											</li>
+											
+											<li>
+												<form name="formulario" method="POST" action="BusquedaGenero.php"> 
+													<select name="mi_combobox"> 
+														<option value="Accion">Accion</option> 
+														<option value="Aventura">Aventura</option>
+														<option value="Animacion">Animacion</option>
+														<option value="Comedia">Comedia</option>
+														<option value="Crimen">Crimen</option>
+														<option value="Documentales">Documentales</option>
+														<option value="Drama">Drama</option>
+														<option value="Familiar">Familiar</option>
+														<option value="Fantasia">Fantasia</option>
+														<option value="Extranjero">Extranjero</option>
+														<option value="Historia">Historia</option>
+														<option value="Terror">Terror</option>
+														<option value="Musica">Musica</option>
+														<option value="Misterio">Misterio</option>
+														<option value="Romance">Romance</option>
+														<option value="Ciencia Ficcion">Ciencia Ficcion</option>
+														<option value="Suspenso">Suspenso</option>
+														<option value="Guerra">Guerra</option>
+														<option value="Vaqueros">Vaqueros</option>
+													</select> 
+													<input type="submit" value="Guardar datos"> 
+												</form> 
+											</li>
+											
+											<li>
+												<form id="search" method="get" action="BusquedaAno.php">
+													<input type="text" name="query" placeholder="año lanzamiento" />
+												</form>
+											</li>
+											
+										</ul>
+									</li>
+									
 									<li>
 										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
@@ -155,23 +234,27 @@
      <h1>Modifica tus datos:</h1>
      
      <div class="form-group ">
-       <input type="text" class="form-control" value=<?PHP echo $algo->usuario; ?> name="UserName" disable>
+     	<font color="white">Usuario:</font>
+       <input type="text" class="form-control" value=<?PHP echo $algo->usuario; ?> name="UserName" disabled>
        <i class="fa fa-user"></i>
-     </div>
-     <div class="form-group ">
+       <div class="form-group ">
+     	<font color="white">Nombre:</font>
        <input type="text" class="form-control" value=<?PHP echo $algo->nombres; ?> name="nombre">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group ">
+     	<font color="white">Apellidos:</font>
        <input type="text" class="form-control" value=<?PHP echo $algo->apellidos; ?> name="apellido">
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group ">
+     	<font color="white">Email:</font>
        <input type="email" class="form-control" value=<?PHP echo $algo->email; ?> name="email">
        <i class="fa fa-user"></i>
      </div>
      
      <div class="form-group log-status">
+     	<font color="white">Password:</font>
        <input type="password" class="form-control" value=<?PHP echo $algo->contrasena; ?> name="Passwod">
        <i class="fa fa-lock"></i>
      </div>
@@ -590,8 +673,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						<!-- Intro -->
 							<section id="intro">
 <header>
-	    <h2>CINE DEL BUENO</h2>
-								  <p>Desarrollado por: puntosoft</p>
+	    <h2 id='titulo'>CINE DEL BUENO</h2>
+								  <p id='subtitulo'>Desarrollado por: puntosoft</p>
 								</header>
 							</section>
 
@@ -705,16 +788,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 	-->						</section>
 
 						<!-- Footer -->
-							<section id="footer">
-								<ul class="icons">
-									<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-								  <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-									<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-							  </ul>
-								<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
-	</section>
+						
 
 					</section>
 

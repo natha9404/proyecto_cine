@@ -114,6 +114,54 @@
 										
 										</a>
 									</li>
+									
+									<li class="subindice">
+										<a href="#subindice">
+											<h2>FILTRAR</h2>
+										</a>
+										<ul >
+											<li>
+												<form id="search" method="get" action="BusquedaActor.php">
+													<input type="text" name="query" placeholder="Actor" />
+												</form>
+											</li>
+											
+											<li>
+												<form name="formulario" method="POST" action="BusquedaGenero.php"> 
+													<select name="mi_combobox"> 
+														<option value="Accion">Accion</option> 
+														<option value="Aventura">Aventura</option>
+														<option value="Animacion">Animacion</option>
+														<option value="Comedia">Comedia</option>
+														<option value="Crimen">Crimen</option>
+														<option value="Documentales">Documentales</option>
+														<option value="Drama">Drama</option>
+														<option value="Familiar">Familiar</option>
+														<option value="Fantasia">Fantasia</option>
+														<option value="Extranjero">Extranjero</option>
+														<option value="Historia">Historia</option>
+														<option value="Terror">Terror</option>
+														<option value="Musica">Musica</option>
+														<option value="Misterio">Misterio</option>
+														<option value="Romance">Romance</option>
+														<option value="Ciencia Ficcion">Ciencia Ficcion</option>
+														<option value="Suspenso">Suspenso</option>
+														<option value="Guerra">Guerra</option>
+														<option value="Vaqueros">Vaqueros</option>
+													</select> 
+													<input type="submit" value="Guardar datos"> 
+												</form> 
+											</li>
+											
+											<li>
+												<form id="search" method="get" action="BusquedaAno.php">
+													<input type="text" name="query" placeholder="año lanzamiento" />
+												</form>
+											</li>
+											
+										</ul>
+									</li>
+									
 									<li>
 										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
