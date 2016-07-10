@@ -2,6 +2,25 @@
 
     require_once('tablas_active/usuario_lista.php');
     
+    $opcion = $_POST['opcion'];
+    
+    if($opcion == 1){
+        $usuario = $_POST['usuario'];
+        $lista = $_POST['lista'];
+        
+        $usuario_lista = new usuario_lista();
+        $usuario_lista->id_usuario = $usuario;
+        $usuario_lista->nom_lista = $lista;
+        
+        
+        $usuario_lista->save();
+        
+        //echo $pelicula;
+        header('Location: '.'mi_lista.php');    
+    }
+    
+    
+    
     class ProcesarUsuariosListas {
         
         

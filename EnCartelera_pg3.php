@@ -184,7 +184,7 @@
 														<option value="Guerra">Guerra</option>
 														<option value="Vaqueros">Vaqueros</option>
 													</select> 
-													<input type="submit" value="Guardar datos"> 
+													<input type="submit" value="Buscar"> 
 												</form> 
 											</li>
 											

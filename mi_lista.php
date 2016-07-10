@@ -236,7 +236,7 @@
 
 		
 <header>
-  <h2>Bienvenido user prueba</h2>
+  <h2>Bienvenido</h2>
  
   
   
@@ -246,6 +246,35 @@
 						<article class="post">
 							  <header> </header>
                               <center><h3> USUARIOS</h3></center>
+                              <p></p>
+                              
+                              
+                              	<div id="main">
+<form action="ProcesarUsuariosListas.php" method="POST">
+						<!-- Post -->
+							<div class="login-form">
+     <h1>Iniciar Sesion:</h1>
+  
+       
+     <div class="form-group ">
+     	
+     	
+       <input type="text" class="form-control" placeholder="Nombre de la lista a crear " name="lista">
+     
+         <input type="hidden" name="opcion" value="1">
+         <?php echo"<input type='hidden' name='usuario' value='".$nombre."' />" ?>
+       
+<button type="submit" class="log-btn" >Crear Lista</button>
+     </div>
+   
+     
+     
+   
+     
+    </form>
+   </div>
+                              
+                              
 									<table>
 										<thead>
 											<td>
