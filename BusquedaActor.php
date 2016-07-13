@@ -15,8 +15,9 @@
 		if (! empty($_SESSION['username'])) 
 	$nombreUser = $_SESSION['username'];
 	
-	//$nombre= $_GET['query'];
-	$nombre= "arnold";
+	$nombreActor= $_GET['query'];
+	echo ($nombreActor);
+	//$nombre= "arnold";
 		require_once("ProcesarUsuariosListas.php");
 	$listas = ProcesarUsuariosListas::listas($nombreUser);
 	
@@ -109,12 +110,27 @@
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
 				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 			echo '<a href="Pagina_Admin.php"><h2>Gestión de Usuarios</h2></a>';
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
  				 
  				
  				
  				 ?>
+ 				 
+ 				 
+ 				 
  				 	<form name="formulario" method="POST" action="mi_lista.php"> 
 													<a>Seleccione Lista a consultar: </a>
 													<select name="combobox"> 
@@ -132,9 +148,38 @@
 													
 													
 												</form> 
+												
+												
+												<?php } ?>
+												
 									</li>
 									</li>
 									
+									<li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mis_calificadas.php"><h2>Mis peliculas calificadas</h2></a>';
+ 				 
+ 				
+ 				
+ 			 } ?>
+												
+									</li>
 									
 									<li>
 										<a href="Estrenos.php">
@@ -162,7 +207,7 @@
 										<ul >
 											<li>
 												<form id="search" method="get" action="BusquedaActor.php">
-													<input type="text" name="query" placeholder="Actor" />
+													<input type="text" name="query" placeholder="actor" />
 												</form>
 											</li>
 											
@@ -240,7 +285,7 @@
 									return $texto;
 							}	
 							
-							$URL_API = "https://api.themoviedb.org/3/search/person?api_key=c7f7381bc44cd24b332ccc18f24fc126&search_type=ngram&query=".$nombre;
+							$URL_API = "https://api.themoviedb.org/3/search/person?api_key=c7f7381bc44cd24b332ccc18f24fc126&search_type=ngram&query=".$nombreActor;
 							
 							$contenido_url = leer_contenido_completo($URL_API);
 							

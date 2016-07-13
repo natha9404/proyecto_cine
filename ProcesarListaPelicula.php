@@ -1,8 +1,10 @@
 <?PHP
 
     require_once('tablas_active/lista_pelicula.php');
+    require('conexion.php');
     
     $opcion = $_POST['opcion'];
+    //echo $opcion;
     
     if($opcion == 1){
         $usuario = $_POST['id_usuario'];
@@ -28,6 +30,19 @@
         
         echo $pelicula;
         header('Location: '.'peli.php?id='.$pelicula);    
+    }else if($opcion==2){
+        $usuario = $_POST['usuario'];
+        //$pelicula = $_POST['id_pelicula'];
+        $lista = $_POST['comboboxMidificar'];
+        $peli = $_POST['nombre_peli'];
+        $listaAnterior = $_POST['anterior'];
+        //echo $lista." ".$usuario." ".$peli." ".$listaAnterior ;
+        
+        $query="UPDATE lista_peliculas SET nom_lista='".$lista."' WHERE id_usuario='".$usuario."' AND nom_pelicula='".$peli."' AND nom_lista='".$listaAnterior."'";
+	
+	    $resultado=$mysqli->query($query);
+	    
+	    header('Location: '."mi_lista.php?actual=".$listaAnterior."");
     }
     
   

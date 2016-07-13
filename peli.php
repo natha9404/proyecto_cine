@@ -7,7 +7,7 @@
 -->
  <?php
  
-
+	require_once("conexion.php");
 	
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
@@ -19,7 +19,10 @@
 	
 	$nombre = $_SESSION['username'];
 	
-		require_once("ProcesarUsuariosListas.php");
+	
+	
+			require_once("ProcesarUsuariosListas.php");
+		
 	
 	$listas = ProcesarUsuariosListas::listas($nombre);
 	
@@ -27,6 +30,19 @@
 	$peli;
 	
 	$id_pelicula = $_GET['id'];
+	
+	require_once("ProcesarCalificarPelicula.php");
+	//$calificacion = $_GET['calificacion'];
+	$calificacion = ProcesarCalificarPelicula::obtenerCalificacion($nombre,$id_pelicula);
+	//echo $id_pelicula;
+	
+	/*if($calificacion !=null){
+		echo " Califificacion =".$calificacion;
+	}else{
+		echo " No tiene Califificacion";
+	}*/
+	
+	
 ?>
 
 
@@ -139,6 +155,31 @@
 									</li>
 									
 									
+									<li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mis_calificadas.php"><h2>Mis peliculas calificadas</h2></a>';
+ 				 
+ 				
+ 				
+ 			 } ?>
+												
+									</li>
 									
 									<li>
 										<a href="Estrenos.php">
@@ -193,7 +234,7 @@
 														<option value="Guerra">Guerra</option>
 														<option value="Vaqueros">Vaqueros</option>
 													</select> 
-													<input type="submit" value="Guardar datos"> 
+													<input type="submit" value="Buscar"> 
 												</form> 
 											</li>
 											
@@ -235,21 +276,34 @@
 								
 								
                                 
+                                
                                 <form name="formulario" method="POST" action="ProcesarCalificarPelicula.php"> 
-
-								<input name="calificacion" type="number" min="1" max="10" value="-" /> 
-								<?php echo"<input type='hidden' name='usuario' value='".$nombre."' />" ?>
-								<?php echo"<input type='hidden' name='peli' value='".$id_pelicula."' />"?>
-								<input type="hidden" name="opcion" value='1'/>
-
-								<input type="submit" value="Calificar"> 
+								
+								<?php
+									echo "<p>Calificacion de la Pelicula:</p>";
+									if($calificacion == null){
+										
+										echo "<input name=calificacion type=number min=1 max=10 value=- />";
+										echo"<input type='hidden' name='usuario' value='".$nombre."' />";
+										echo"<input type='hidden' name='peli' value='".$id_pelicula."' />";
+										echo "<input type=hidden name=opcion value=1/>";
+										echo "<input type=submit value=Calificar>";
+									}else{
+										echo "<input name=calificacion type=number min=1 max=10 value='".$calificacion."'/>";
+										echo"<input type='hidden' name='usuario' value='".$nombre."' />";
+										echo"<input type='hidden' name='peli' value='".$id_pelicula."' />";
+										echo "<input type=hidden name=opcion value=2/>";
+										echo "<input type=submit value=Modificar>";
+									}
+								?>
+								
 								</form> 
 								
 								
-								
+												<a>Mis Listas: </a>
 										
 												<form name="formulario" method="POST" action="ProcesarListaPelicula.php"> 
-													<a>Listas: </a>
+													
 													<select name="mi_combobox"> 
 													
 														<?PHP
@@ -300,6 +354,9 @@
 															$JSON_PANORAMIO_PHP = json_decode($contenido_url);
 															
 															$peli =$JSON_PANORAMIO_PHP->title;
+															
+															
+															
 															//echo $peli;
 															/*########################################################################*/
 															
@@ -328,13 +385,14 @@
 												</form> 
 										
 											
-  
+  										
                    	
 
 		
 		
 									<?php
-									
+										$query = "INSERT INTO peliculas (id_pelicula, nombre) VALUES ('".$id_pelicula."','".$JSON_PANORAMIO_PHP->title."')";
+															$resutlado =$mysqli->query($query);
 										
 										//$JSON_PANORAMIO_PHP = json_decode($tmdb->searchMovie('Phoenix'));
 										

@@ -5,6 +5,11 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
  <?php
+	
+	
+		
+		
+		
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
 		if (!isset($_SESSION['username'])){
@@ -12,16 +17,51 @@
     
 		}
 		if (! empty($_SESSION['username'])) 
-	$_SESSION['username'];
 	
-		require_once("ProcesarUsuariosListas.php");
+	$nombre = $_SESSION['username'];
 	
-	$listas = ProcesarUsuariosListas::listas($nombre);
+	require('conexion.php');
+	
+
+	
+	require_once("ProcesarUsuariosListas.php");
 	
 	
-	$peli;
+					
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+						$opcion = $_POST['user_calificar'];	
+						
+					
+						$query="SELECT calificar_peliculas.id_usuario, peliculas.nombre,peliculas.id_pelicula, calificar_peliculas.calificacion FROM calificar_peliculas  INNER JOIN peliculas ON calificar_peliculas.id_pelicula=peliculas.id_pelicula WHERE id_usuario='$opcion' ";
+						//$query="SELECT calificar_peliculas.id_usuario, calificar_peliculas.id_pelicula, calificar_peliculas.calificacion FROM calificar_peliculas WHERE id_usuario='".$nombre."'";
+						
+						$resultado=$mysqli->query($query);
+				 		
+				 		
+							}
+				 	
+				 		else {
 	
-	$id_pelicula = $_GET['id'];
+					
+						$query="SELECT calificar_peliculas.id_usuario, peliculas.nombre,peliculas.id_pelicula, calificar_peliculas.calificacion FROM calificar_peliculas  INNER JOIN peliculas ON calificar_peliculas.id_pelicula=peliculas.id_pelicula WHERE id_usuario='$nombre' ";
+							//$query="SELECT calificar_peliculas.id_usuario, calificar_peliculas.id_pelicula, calificar_peliculas.calificacion FROM calificar_peliculas WHERE id_usuario='".$nombre."'";
+							
+							$resultado=$mysqli->query($query);
+					
+				 		}
+	
+	//echo("algoo");
+	
+
+	
+	
+	
+	//echo $nom_peli;
+	
+	
+	
 ?>
 
 
@@ -58,7 +98,8 @@
  				echo '<a href="login.php">Iniciar Sesion</a>';
  				 ?>
   </li>
-     <li>
+                 
+                    <li>
                               <?php
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION['username'])) 
@@ -67,8 +108,7 @@
  				 echo '<a href="mi_cuenta.php">Mi Cuenta</a>';
  			
  				 ?>
-  </li>
-                              
+  </li>             
 						
 							</ul>
 						</nav>
@@ -102,22 +142,10 @@
 								<ul class="links">
 									 
 									
-							 <li>
+									 <li>
 										 <?php
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
-				 
-				 
-				 
-						 if($_SESSION['username']=="admin"){
-				 		
-				 			echo '<a href="Pagina_Admin.php"><h2>Gestión de Usuarios</h2></a>';
-				 		
-				 		
-							}
-				 	
-				 		else {
-				 
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
@@ -125,9 +153,6 @@
  				
  				
  				 ?>
- 				 
- 				 
- 				 
  				 	<form name="formulario" method="POST" action="mi_lista.php"> 
 													<a>Seleccione Lista a consultar: </a>
 													<select name="combobox"> 
@@ -145,12 +170,33 @@
 													
 													
 												</form> 
-												
-												
-												<?php } ?>
-												
 									</li>
 									
+									<li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mis_calificadas.php"><h2>Mis peliculas calificadas</h2></a>';
+ 				 
+ 				
+ 				
+ 			 } ?>
+												
+									</li>
 									
 									<li>
 										<a href="Estrenos.php">
@@ -226,6 +272,7 @@
 									</li>
 								</ul>
 							</section>
+
 						<!-- Actions -->
 							
 
@@ -239,57 +286,67 @@
 
 		
 <header>
-	
-	  <h2>Bienvenido:  <?php
-	if(!empty($_SESSION['username']))
-		echo $_SESSION['username'];  ?>
-		</h2> 
-  <p>peliculas destacadas</p>
+  <h2>Peliculas Calificadas</h2>
+ 
+  
+  
 </header>
 						
-						<table class="tablaPeliculas">
-							<tr id="filas">
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/espias.png"></img>
-                                        <p><a href="mi_lista.php"> Añadir a mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/san_andreas.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/child44.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
-									</a>
-								</td>
-							</tr>
-							
-							<trid="filas">
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/snoopy.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/phoenix.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
-									</a>
-								</td>
-								<td>
-									<a href="peli.php">
-										<img src="./images/peliculas/fant4stic.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
-									</a>
-								</td>
-							</tr>
-						</table>
+					
+						<article class="post">
+							  <header> </header>
+                              
+                              
+                              
+									<table>
+										<thead>
+											<td>
+												<h3>Nombre Pelicula</h3>
+											</td>
+											
+											<td>
+												<h3>Calificacion</h3>
+											</td>
+											
+										</thead>
+										
+										<tbody>
+											<?PHP
+											//echo $resultado;
+											
+											
+											//echo "hola"; 
+											
+											$numero2 = mysqli_num_rows($resultado);
+											
+											//echo $numero2;
+											
+											
+											if($numero2 > 0){ ?>
+											<?php while($row=$resultado->fetch_assoc()){ ?>
+											<tr>
+												
+												<td>
+													<?php
+														echo "<a href="."peli.php"."?id=".$row['id_pelicula'].">";
+														echo $row['nombre'];
+														echo "</a>";
+													?>
+												</td>
+												<td>
+													<?php echo $row['calificacion'];?>
+												</td>
+												
+											</tr>
+											<?php } ?>
+										<?php } ?>
+											
+											
+											
+										
+										</tbody>
+									</table>
+							</article>
 							
 						
 

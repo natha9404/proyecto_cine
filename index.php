@@ -5,6 +5,8 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
  <?php
+		require_once('ProcesarUsuariosListas.php');
+		
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
 		if (!isset($_SESSION['username'])){
@@ -100,12 +102,27 @@
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
 				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 			echo '<a href="Pagina_Admin.php"><h2>Gestión de Usuarios</h2></a>';
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
  				 
  				
  				
  				 ?>
+ 				 
+ 				 
+ 				 
  				 	<form name="formulario" method="POST" action="mi_lista.php"> 
 													<a>Seleccione Lista a consultar: </a>
 													<select name="combobox"> 
@@ -123,10 +140,11 @@
 													
 													
 												</form> 
+												
+												
+												<?php } ?>
+												
 									</li>
-									</li>
-									
-									
 									
 									<li>
 										<a href="Estrenos.php">
@@ -181,7 +199,7 @@
 														<option value="Guerra">Guerra</option>
 														<option value="Vaqueros">Vaqueros</option>
 													</select> 
-													<input type="submit" value="Guardar datos"> 
+													<input type="submit" value="Buscar"> 
 												</form> 
 											</li>
 											

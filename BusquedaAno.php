@@ -104,10 +104,22 @@
 								<ul class="links">
 									 
 									
-									 <li>
+									  <li>
 										 <?php
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 			echo '<a href="Pagina_Admin.php"><h2>Gestión de Usuarios</h2></a>';
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
 				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
@@ -115,6 +127,9 @@
  				
  				
  				 ?>
+ 				 
+ 				 
+ 				 
  				 	<form name="formulario" method="POST" action="mi_lista.php"> 
 													<a>Seleccione Lista a consultar: </a>
 													<select name="combobox"> 
@@ -132,8 +147,37 @@
 													
 													
 												</form> 
+												
+												
+												<?php } ?>
+												
 									</li>
 									
+									<li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mis_calificadas.php"><h2>Mis peliculas calificadas</h2></a>';
+ 				 
+ 				
+ 				
+ 			 } ?>
+												
+									</li>
 									
 									<li>
 										<a href="Estrenos.php">

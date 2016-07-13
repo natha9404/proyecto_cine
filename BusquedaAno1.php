@@ -1,10 +1,11 @@
-<!DOCTYPE HTML>
 <!--
 	Future Imperfect by HTML5 UP
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
  <?php
+		require_once('ProcesarPelicula.php');
+		
 		session_start();
 		//manejamos en sesion el nombre del usuario que se ha logeado
 		if (!isset($_SESSION['username'])){
@@ -12,11 +13,12 @@
     
 		}
 		if (! empty($_SESSION['username'])) 
-	$_SESSION['username'];
+	$nombreUser = $_SESSION['username'];
 	
+	$nombre= $_GET['query'];
+	//$nombre= "arnold";
 		require_once("ProcesarUsuariosListas.php");
-	
-	$listas = ProcesarUsuariosListas::listas($nombre);
+	$listas = ProcesarUsuariosListas::listas($nombreUser);
 	
 	
 	$peli;
@@ -102,7 +104,7 @@
 								<ul class="links">
 									 
 									
-							 <li>
+								 <li>
 										 <?php
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
@@ -151,6 +153,31 @@
 												
 									</li>
 									
+									<li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mis_calificadas.php"><h2>Mis peliculas calificadas</h2></a>';
+ 				 
+ 				
+ 				
+ 			 } ?>
+												
+									</li>
 									
 									<li>
 										<a href="Estrenos.php">
@@ -218,6 +245,7 @@
 										</ul>
 									</li>
 									
+									
 									<li>
 										<a href="acerca.php">
 											<h2>ACERCA DE MOVIE</h2>
@@ -226,6 +254,7 @@
 									</li>
 								</ul>
 							</section>
+
 						<!-- Actions -->
 							
 
@@ -239,32 +268,70 @@
 
 		
 <header>
-	
-	  <h2>Bienvenido:  <?php
-	if(!empty($_SESSION['username']))
-		echo $_SESSION['username'];  ?>
-		</h2> 
-  <p>peliculas destacadas</p>
-</header>
+	    <?PHP
+	     echo "<h2>ESTRENOS " .$nombre."</h2>"
+		?>
+								  <p>Desarrollado por: puntosoft</p>
+								</header>
 						
 						<table class="tablaPeliculas">
+							<?php 
+							function leer_contenido_completo($url){
+								$fichero_url = fopen ($url, "r");
+									$texto = "";
+									while ($trozo = fgets($fichero_url, 1024)){
+    									$texto .= $trozo;
+									}
+									return $texto;
+							}	
+							
+							//$URL_API = "http://api.themoviedb.org/3/discover/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&primary_release_year=".$nombre;
+							//$URL_API = "http://api.themoviedb.org/3/discover/movie?api_key=c7f7381bc44cd24b332ccc18f24fc126&primary_release_year=".$nombre;
+							$URL_API = "http://api.tmdb.org/3/search/person?api_key=c7f7381bc44cd24b332ccc18f24fc126&query=tom%20hanks";
+							
+							$contenido_url = leer_contenido_completo($URL_API);
+							
+							$JSON = json_decode($contenido_url);
+							
+							$x=0;
+							
+							foreach($JSON->results as $movie){
+								if(($x % 3 == 0)||($x==0)){
+									echo "<tr id=filas>";
+								}
+								echo "<td>";
+									echo "<a href="."peli.php"."?id=".$movie->id.">";
+											echo "<img src="."http://image.tmdb.org/t/p/w185/".$movie->poster_path."></img>";
+											//echo "<small>".$movie->original_title."</small>";
+											echo "<p id="."titulopelicula".">".$movie->original_title."</p>";
+											
+											
+									echo "</a>";
+								
+									
+								echo "</td>";
+								if((($x + 1) % 3) == 0){
+									echo "</tr>";
+								}
+								$x += 1;
+							}
+							
+							?>
+							<!--
 							<tr id="filas">
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/espias.png"></img>
-                                        <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/san_andreas.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/child44.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 							</tr>
@@ -273,28 +340,21 @@
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/snoopy.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/phoenix.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 								<td>
 									<a href="peli.php">
 										<img src="./images/peliculas/fant4stic.png"></img>
-                                         <p><a href="mi_lista.php"> Añadir a mi lista </p>
 									</a>
 								</td>
 							</tr>
+							-->
 						</table>
-							
-						
-
-						
-                                
 
 						<!-- Footer -->
 							<section id="footer">

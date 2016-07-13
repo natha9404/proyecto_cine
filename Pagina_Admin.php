@@ -16,6 +16,7 @@
 		if (! empty($_SESSION['username'])) 
 	$_SESSION['username'];
 	
+		require_once("ProcesarUsuariosListas.php");
 	$algo = procesar::listar();
 	
 
@@ -105,10 +106,17 @@
 									 <li>
 										 <?php
               //CREAR INICIO SESION 
-				 if (! empty($_SESSION["username"])) 
-				 
-				 //FALTA CREAR LOGOUT
- 				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+				 if (! empty($_SESSION["username"])) {
+				 	
+				 	
+				 	if($_SESSION['username']=="admin"){
+				 		
+				 		echo '<a href="Pagina_Admin.php"><h2>Gestión de Usuarios</h2></a>';
+				 		
+				 		
+				 	}
+				
+				 }
  				
  				 ?>
 									</li>
@@ -168,7 +176,7 @@
 														<option value="Guerra">Guerra</option>
 														<option value="Vaqueros">Vaqueros</option>
 													</select> 
-													<input type="submit" value="Guardar datos"> 
+													<input type="submit" value="Buscar"> 
 												</form> 
 											</li>
 											
@@ -226,6 +234,11 @@
 												<h3>Fecha Nacimiento</h3>
 											</td>
 											
+											
+											<td>
+												<h3>Listas de Usuario</h3>
+											</td>
+											
 											<td></td>
 											
 										</thead>
@@ -238,9 +251,9 @@
 														?>
 														
 														<tr>
-															<form action="procesar.php" method="POST">
+															<form action="mi_lista.php" method="POST">
 															<td>
-																<input type="text" value = <?PHP echo $algo[$i]->usuario;?> name="UserName" disable>
+																<input type="text" value = <?PHP echo $algo[$i]->usuario;?> name="UserName" disabled>
 															</td>
 															
 															<td>
@@ -269,11 +282,118 @@
 																?>
 															</td>
 															
-															<td>
 															
+															
+															<td>
+																
+																	
+																<?php 	if($algo[$i]->usuario == 'admin'){
+																	
+																	
+																}
+																
+																	else { ?>
+																
+																	<form name="combobox2" method="POST" action="guardar_en_la_base_de_datos.php"> 
+																		<select name="combobox"> 
+																<?PHP
+																
+																	$listas = ProcesarUsuariosListas::listas($algo[$i]->usuario);
+																	//echo count($listas);
+																	$contador = count($listas);
+																	
+																	
+																
+																		
+																	
+																	
+																	for ($j=0; $j < $contador; $j++){
+																	
+																		
+																		echo "<option value= '".$listas[$j]->nom_lista."'>".$listas[$j]->nom_lista."</option>";
+																		
+																		
+																		
+																	}
+																	
+																	}
+																
+																
+																	//for ($i=0; $i < count($contador) ;$i++){
+																	
+																		//echo "hola";	
+																		//echo count($contador);
+																		
+																		//echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																	//	echo $listas[$lista]->nom_lista;
+																	//}
+																?>
+																
+																
+																<?php if($algo[$i]->usuario == 'admin'){
+																	
+																	
+																}
+																
+																	else { ?>
+																	
+																	
+																	
+																</select> 
+																
+																
+																	 
+																	 <input type='hidden' name='user_lista' value=<?PHP echo $algo[$i]->usuario; ?> >
+																		
+																		<input type="submit" value="Ver lista de usuario"> 
+																	</form> 
+																	
+																	
+																	<?php } ?>
+																
+															</td>
+															
+														
+															
+															<td>
+																
+																<?php 	if($algo[$i]->usuario == 'admin'){
+																	
+																	
+																}
+																
+																	else { ?>
+																	
+																	<form action="mis_calificadas.php" method="POST">
     	
+															    	<input type="hidden" name="user_calificar" value=<?PHP echo $algo[$i]->usuario; ?> >
+															    	
+															    	
+																	<button id="boton" type="submit" class="log-btn" >Ver <br> Calificadas</button>
+														    	
+														    	<?php } ?>
+														    	
+														     	</form>
+															</td>
+														
+															
+															
+															
+															<td>
+																
+																<?php 	if($algo[$i]->usuario == 'admin'){
+																	
+																	
+																}
+																
+																	else { ?>
+    	
+    																<form action="procesar.php" method="POST">
+    																<input type="hidden" name="UserName" value=<?PHP echo $algo[$i]->usuario; ?>>
 															    	<input type="hidden" name="opcion" value="5">
-																	<button type="submit" class="log-btn" >Eliminar Cuenta</button>
+																	<button id="boton" type="submit" class="log-btn" >Eliminar <br/> Cuenta</button>
+														    	
+														    	<?php } ?>
 														    	
 														     	</form>
 															</td>

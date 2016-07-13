@@ -19,6 +19,12 @@
 		}
 		if (! empty($_SESSION['username'])) 
 	
+	
+	
+	$opcion = $_POST['user_lista'];
+
+	
+	
 	$nombre = $_SESSION['username'];
 	
 	//echo("algoo");
@@ -26,8 +32,31 @@
 	$listas = ProcesarUsuariosListas::listas($nombre);
 	$lista = $_POST['combobox'];
 	
+	//echo $lista;
+	if($lista==null){
+		$lista = $_GET['actual'];
+		//echo $lista;
+	}
+	
 	//echo ($lista);
+	
+		 if($_SESSION['username'] == 'admin'){
+		 	
+		 //	echo $opcion;
+		 
+		 //	echo $lista;
+																	
+				$algo = ProcesarListaPelicula::listar($opcion, $lista);													
+																}
+																
+			else { 
+	
+	
+	//echo $nombre;
 	$algo = ProcesarListaPelicula::listar($nombre, $lista);
+	
+	
+			}
 	
 	$nom_peli = $_POST['mi_combobox'];
 	
@@ -147,6 +176,31 @@
 												</form> 
 									</li>
 									
+									<li>
+										 <?php
+              //CREAR INICIO SESION 
+				 if (! empty($_SESSION["username"])) 
+				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
+				 //FALTA CREAR LOGOUT
+ 				 echo '<a href="mis_calificadas.php"><h2>Mis peliculas calificadas</h2></a>';
+ 				 
+ 				
+ 				
+ 			 } ?>
+												
+									</li>
 									
 									<li>
 										<a href="Estrenos.php">
@@ -201,7 +255,7 @@
 														<option value="Guerra">Guerra</option>
 														<option value="Vaqueros">Vaqueros</option>
 													</select> 
-													<input type="submit" value="Guardar datos"> 
+													<input type="submit" value="Buscar"> 
 												</form> 
 											</li>
 											
@@ -253,27 +307,72 @@
 <form action="ProcesarUsuariosListas.php" method="POST">
 						<!-- Post -->
 							<div class="login-form">
-     <h1>Iniciar Sesion:</h1>
-  
+     <h1>Crear Lista:</h1>
+  	<?php  if($_SESSION['username'] == 'admin'){
+     		
+     	}
+     	
+     	else { ?>
        
      <div class="form-group ">
      	
+     
      	
        <input type="text" class="form-control" placeholder="Nombre de la lista a crear " name="lista">
      
          <input type="hidden" name="opcion" value="1">
          <?php echo"<input type='hidden' name='usuario' value='".$nombre."' />" ?>
+         <?php echo"<input type='hidden' name='actual2' value='".$lista."' />" ?>
        
 <button type="submit" class="log-btn" >Crear Lista</button>
+
+
+<?php } ?>
+
      </div>
-   
-     
      
    
      
     </form>
    </div>
-                              
+   
+    <!-----------------------------ELIMINAR LISTAS-------------------------------------->
+   
+   <div id="main">
+<form action="ProcesarUsuariosListas.php" method="POST">
+						<!-- Post -->
+							<div class="login-form">
+     <h1>Eliminar Lista:</h1>
+  	<?php  if($_SESSION['username'] == 'admin'){
+     		
+     	}
+     	
+     	else { ?>
+       
+     <div class="form-group ">
+     	
+     
+     	
+       <input type="text" class="form-control" placeholder="Nombre de la lista a eliminar " name="lista">
+     
+         <input type="hidden" name="opcion" value="2">
+         <?php echo"<input type='hidden' name='usuario' value='".$nombre."' />" ?>
+          <?php echo"<input type='hidden' name='actual' value='".$lista."' />" ?>
+         
+       
+<button type="submit" class="log-btn" >Eliminar Lista</button>
+
+
+<?php } ?>
+
+     </div>
+     
+   
+     
+    </form>
+   </div>
+   
+    <!------------------------------------------------------------------->                  
                               
 									<table>
 										<thead>
@@ -282,15 +381,28 @@
 											</td>
 											
 											<td>
-												<h3>Combo</h3>
+												<h3>Lista</h3>
 											</td>
 											
-										
+											<?php 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 		
+				 		
+				 		
+							}
+				 	
+				 		else { ?>
+											
 											
 											<td>
-												<h3>Eliminar</h3>
+												<h3>Cambiar de Lista</h3>	
 											</td>
 											
+											<td>
+												<h3>Eliminar de la lista</h3>
+											</td>
+									<?php } ?>		
 										
 											
 										</thead>
@@ -306,7 +418,8 @@
 														echo "<tr>";
 															//<!--form action="procesar.php" method="POST"--->
 															echo "<td>";
-																
+															
+																//echo $i;
 																//echo "<p>";
 																/*echo <input type="text" value = <?PHP echo $algo[$i]->usuario;?> name="UserName" disable>*/
 																echo $algo[$i]->nom_pelicula;
@@ -316,18 +429,66 @@
 															
 															echo "<td>";
 																
-																echo $algo[$i]->nom_lista;	
+																echo "<form name=formulario method=POST action=ProcesarListaPelicula.php>";
+																echo "<select name=comboboxMidificar>";
+													
+														
+																for ($j=0; $j < count($listas) ;$j++){
+																	
+																	if($algo[$i]->nom_lista == $listas[$j]->nom_lista){
+																		echo "<option selected=selected>";
+																		echo $algo[$i]->nom_lista;
+																		echo "</option>";
+																	}else{
+																		echo "<option value= '".$listas[$j]->nom_lista."'>".$listas[$j]->nom_lista."</option>";
+																	}
+																}
+														
+																echo "</select>";
+																
+																//echo $algo[$i]->nom_lista;	
 																
 															echo "</td>";
+															
+															
+																										
+														 if($_SESSION['username']=="admin"){
+												 		
+												 		
+												 		
+												 		
+															}
+												 	
+												 		else { 
+															
 															
 															echo"<td>";
 															
     	
-															    echo "<input type='hidden' name='opcion' value='5'>";
-																echo "<button type='submit' class='log-btn' >Eliminar Cuenta</button>";
+															    echo "<input type='hidden' name='opcion' value='2'>";
+															    echo "<input type='hidden' name='usuario' value='".$nombre."'>";
+															    echo "<input type='hidden' name='nombre_peli' value='".$algo[$i]->nom_pelicula."'>";
+															    echo "<input type='hidden' name='anterior' value='".$lista."'>";
+															    
+																//echo "<button type='submit' class='log-btn' >Modificar</button>";
+																echo "<input type=submit value=Modificar>";
 														    	
+														    	echo "</form>";
 														     	//<!--/form-->
 															echo "</td>";
+															
+															echo"<td>";
+															
+															    echo "<input type='hidden' name='opcion' value='6'>";
+																//echo "<button type='submit' class='log-btn' >Eliminar de esta Lista</button>";
+																echo "<input type=submit value=Eliminar de esta Lista>";
+														    	
+															echo "</td>";
+															
+															
+															
+												 		}
+															
 														echo "</tr>";
 														
 														

@@ -100,10 +100,49 @@
               //CREAR INICIO SESION 
 				 if (! empty($_SESSION["username"])) 
 				 
+				 
+				 
+						 if($_SESSION['username']=="admin"){
+				 		
+				 			echo '<a href="Pagina_Admin.php"><h2>Gestión de Usuarios</h2></a>';
+				 		
+				 		
+							}
+				 	
+				 		else {
+				 
+				 
 				 //FALTA CREAR LOGOUT
  				 echo '<a href="mi_lista.php"><h2>Mi lista de Peliculas</h2></a>';
+ 				 
+ 				
  				
  				 ?>
+ 				 
+ 				 
+ 				 
+ 				 	<form name="formulario" method="POST" action="mi_lista.php"> 
+													<a>Seleccione Lista a consultar: </a>
+													<select name="combobox"> 
+													
+														<?PHP
+															for ($i=0; $i < count($listas) ;$i++){
+																echo "<option value= '".$listas[$i]->nom_lista."'>".$listas[$i]->nom_lista."</option>";
+																//echo $listas[$lista]->nom_lista;
+															}
+														?>
+														<!--<option value="Vistas">Vistas</option> 
+														<option value="PorVer">Por Ver</option>-->
+													</select> 
+													<input type="submit" value="Cargar Lista"> 
+													
+													
+												</form> 
+												
+												
+												<?php } ?>
+												
+									</li>
 									</li>
 									
 									
@@ -161,7 +200,7 @@
 														<option value="Guerra">Guerra</option>
 														<option value="Vaqueros">Vaqueros</option>
 													</select> 
-													<input type="submit" value="Guardar datos"> 
+													<input type="submit" value="Buscar"> 
 												</form> 
 											</li>
 											

@@ -1,6 +1,7 @@
 <?php
 	require_once('tablas_active/pelicula.php');
 	require_once('tablas_active/usuario.php');
+	require('conexion.php');
 
 	$opcion = $_POST['opcion'];
 	
@@ -18,7 +19,8 @@
 		
 		if($Passwod == $Confirmar)
 			{
-
+			//require_once('ProcesarUsuariosListas.php');
+			//$defecto =  ProcesarUsuariosListas::defecto($UserName);
 			$usuario = new Usuario();
 			$usuario->usuario = $UserName;
 			$usuario->nombres = $nombre;
@@ -28,6 +30,22 @@
 			$usuario->fecha_nacimiento = $fecha;
 			
 			$usuario->save();
+			
+			//$defecto;
+			
+			$query1 = "INSERT INTO usuario_listas (id_usuario, nom_lista) VALUES ('".$UserName."', 'por ver')";
+			$query2 = "INSERT INTO usuario_listas (id_usuario, nom_lista) VALUES ('".$UserName."', 'vistas')";
+			$query3 = "INSERT INTO usuario_listas (id_usuario, nom_lista) VALUES ('".$UserName."', 'recomendadas')";
+			
+			
+			$resutlado1 =$mysqli->query($query1);
+			$resutlado2 =$mysqli->query($query2);
+			$resutlado3 =$mysqli->query($query3);
+			
+			echo $query1;
+			
+			echo $resutlado1;
+			
 			session_start();
 			$_SESSION['username'] = $UserName;
 	
@@ -55,7 +73,7 @@
 				session_start();
 				$_SESSION['username'] = $UserName;
 		
-				header('Location: '.'Mejor_punutadas.php');
+				header('Location: '.'Pagina_Admin.php');
 			}else{
 				session_start();
 				$_SESSION['username'] = $UserName;
@@ -111,10 +129,14 @@
 		
 	}else if($opcion ==5){
 		$UserName = $_POST['UserName'];
-		$para = Usuario::find_by_usuario($UserName);
-		$para->delete();
+		$query = "DELETE usuarios, calificar_peliculas, comentar_peliculas, lista_peliculas, usuarios_listas FROM usuarios, calificar_peliculas, comentar_peliculas, lista_peliculas, usuarios_listas WHERE  calificar_peliculas.id_usuario = usuarios.usuario AND comentar_peliculas.id_usuario = usuarios.usuario AND lista_peliculas.id_usuario = usuarios.usuario AND usuarios_listas.id_usuario = usuarios.usuario AND usuarios.usuario = '".$UserName."'";
+		$resultado =  $mysqli->query($query);
 		session_start();
 		header('Location: '.'Pagina_Admin.php');
+		/*$para = Usuario::find_by_usuario($UserName);
+		$para->delete();
+		session_start();
+		header('Location: '.'Pagina_Admin.php');*/
 	}
 	
 	
